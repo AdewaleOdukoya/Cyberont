@@ -1,0 +1,8 @@
+F1 incident asserted both High and Low severity	consistent=false
+F2 CVSS score outside 0.0-10.0	consistent=false
+F3 second, conflicting CVSS score on one vulnerability	consistent=false
+F4 criticality value outside {High, Moderate, Low}	consistent=false
+F5 alert reports an asset instead of an incident (domain/range clash)	consistent=false
+F6 ransomware individual whose closure omits T1486	consistent=false
+F7 a single threat typed as both phishing and DDoS	consistent=false
+C1 control: valid new medium-CVSS vulnerability (should stay consistent)	consistent=true

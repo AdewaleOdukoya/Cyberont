@@ -1,0 +1,5 @@
+removed asserted severity disjointness axioms: 1
+High and Medium satisfiable: false
+High and Low satisfiable: false
+Medium and Low satisfiable: false
+High satisfiable: true, Medium: true, Low: true

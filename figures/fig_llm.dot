@@ -1,0 +1,14 @@
+digraph L {
+  graph [rankdir=TB, nodesep=0.12, ranksep=0.2, dpi=300, pad=0.03, fontname="Liberation Sans"];
+  node [fontname="Liberation Sans", fontsize=8, shape=box, style="rounded", margin="0.06,0.03", height=0.22, penwidth=0.8];
+  edge [fontname="Liberation Sans", fontsize=7, arrowsize=0.45, penwidth=0.7, color="#333333"];
+  Q [label="Analyst question"];
+  R [label="Incident records (prose)\n+ severity policy (C2–C3)"];
+  LLM [label="LLM", style="rounded,filled", fillcolor="#F0F0F0"];
+  DLQ [label="C4: generated\nDL query"];
+  KB [label="CyberOnt v2 + HermiT\n(classification, realisation)", style="rounded,bold"];
+  F [label="C3: retrieved facts, inferred\nclasses, DL-query answers"];
+  A [label="Answer + explanation\n(scored vs. reasoner gold)"];
+  Q -> LLM; R -> LLM; LLM -> DLQ [style=dashed]; DLQ -> KB [style=dashed]; KB -> F; F -> LLM; LLM -> A; KB -> A [style=dotted, label=" C4 answer set"];
+  {rank=same; Q; R;}
+}

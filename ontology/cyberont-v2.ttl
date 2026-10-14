@@ -1,0 +1,1668 @@
+@prefix : <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity> .
+
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity> rdf:type owl:Ontology ;
+                                                                   owl:versionIRI <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/2.0.0> ;
+                                                                   rdfs:comment "Version 2 of the cybersecurity incident ontology. Extends v1 with a standards-grounded, closure-based severity model (FIPS 199 asset criticality x CVSS v3.1 band / MITRE ATT&CK Impact tactic, combined following the qualitative risk matrix of NIST SP 800-30 Rev. 1)."@en ;
+                                                                   rdfs:label "CyberOnt: Cybersecurity Incident Ontology"@en ;
+                                                                   owl:versionInfo "2.0.0" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/source
+dcterms:source rdf:type owl:AnnotationProperty .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> rdf:type owl:AnnotationProperty ;
+                                                                                rdfs:comment "How the entity relates to an external standard: reused, aligned, extended or new."@en .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#seeAlso
+rdfs:seeAlso rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#closeMatch
+skos:closeMatch rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#relatedMatch
+skos:relatedMatch rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/affectsAsset
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/affectsAsset> rdf:type owl:ObjectProperty ;
+                                                                               rdfs:domain <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident> ;
+                                                                               rdfs:range <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CyberAsset> ;
+                                                                               rdfs:comment "Links an incident to an asset whose confidentiality, integrity or availability it impacts."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/causedBy
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/causedBy> rdf:type owl:ObjectProperty ;
+                                                                           rdfs:domain <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident> ;
+                                                                           rdfs:range <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Actor> ;
+                                                                           rdfs:comment "Links an incident to the actor responsible for it."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/exploitsVulnerability
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/exploitsVulnerability> rdf:type owl:ObjectProperty ;
+                                                                                        rdfs:domain <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Threat> ;
+                                                                                        rdfs:range <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Vulnerability> ;
+                                                                                        rdfs:comment "Links a threat to a weakness it leverages."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/generatedBy
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/generatedBy> rdf:type owl:ObjectProperty ;
+                                                                              rdfs:domain <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Alert> ;
+                                                                              rdfs:range <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/SecurityControl> ;
+                                                                              rdfs:comment "Links an alert to the sensor or control that raised it."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasVulnerability
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasVulnerability> rdf:type owl:ObjectProperty ;
+                                                                                   rdfs:domain <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CyberAsset> ;
+                                                                                   rdfs:range <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Vulnerability> ;
+                                                                                   rdfs:comment "Links an asset to a vulnerability present on it."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/involvesThreat
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/involvesThreat> rdf:type owl:ObjectProperty ;
+                                                                                 rdfs:domain <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident> ;
+                                                                                 rdfs:range <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Threat> ;
+                                                                                 rdfs:comment "Links an incident to a threat (attack) involved in it."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/mitigatesThreat
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/mitigatesThreat> rdf:type owl:ObjectProperty ;
+                                                                                  rdfs:domain <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/SecurityControl> ;
+                                                                                  rdfs:range <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Threat> ;
+                                                                                  rdfs:comment "Links a control to a threat it counters."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/mitigatesVulnerability
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/mitigatesVulnerability> rdf:type owl:ObjectProperty ;
+                                                                                         rdfs:domain <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/SecurityControl> ;
+                                                                                         rdfs:range <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Vulnerability> ;
+                                                                                         rdfs:comment "Links a control to a vulnerability it reduces."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/partOfTactic
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/partOfTactic> rdf:type owl:ObjectProperty ;
+                                                                               rdfs:domain <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTechnique> ;
+                                                                               rdfs:range <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTactic> ;
+                                                                               rdfs:comment "Links an ATT&CK technique to the tactic(s) under which ATT&CK lists it."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/protectsAsset
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/protectsAsset> rdf:type owl:ObjectProperty ;
+                                                                                rdfs:domain <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/SecurityControl> ;
+                                                                                rdfs:range <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CyberAsset> ;
+                                                                                rdfs:comment "Links a control to an asset it protects (v1 name: protectsAssets)."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/reportsIncident
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/reportsIncident> rdf:type owl:ObjectProperty ;
+                                                                                  rdfs:domain <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Alert> ;
+                                                                                  rdfs:range <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident> ;
+                                                                                  rdfs:comment "Links an alert to the incident it reports."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/targetsAsset
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/targetsAsset> rdf:type owl:ObjectProperty ;
+                                                                               rdfs:domain <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Threat> ;
+                                                                               rdfs:range <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CyberAsset> ;
+                                                                               rdfs:comment "Links a threat to an asset it targets (v1 name: targetsAssets)."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/usesTechnique
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/usesTechnique> rdf:type owl:ObjectProperty ;
+                                                                                rdfs:domain <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Threat> ;
+                                                                                rdfs:range <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTechnique> ;
+                                                                                rdfs:comment "Links a threat to a MITRE ATT&CK technique it employs."@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasAttackID
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasAttackID> rdf:type owl:DatatypeProperty ;
+                                                                              rdfs:domain [ rdf:type owl:Class ;
+                                                                                            owl:unionOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTactic>
+                                                                                                          <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTechnique>
+                                                                                                        )
+                                                                                          ] ;
+                                                                              rdfs:range xsd:string ;
+                                                                              rdfs:comment "MITRE ATT&CK identifier, e.g. T1486 or TA0040."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCVEIdentifier
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCVEIdentifier> rdf:type owl:DatatypeProperty ;
+                                                                                   rdfs:domain <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Vulnerability> ;
+                                                                                   rdfs:range xsd:string ;
+                                                                                   rdfs:comment "CVE identifier, where one exists."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCVSSScore
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCVSSScore> rdf:type owl:DatatypeProperty ,
+                                                                                        owl:FunctionalProperty ;
+                                                                               rdfs:domain <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Vulnerability> ;
+                                                                               rdfs:range [ rdf:type rdfs:Datatype ;
+                                                                                            owl:onDatatype xsd:decimal ;
+                                                                                            owl:withRestrictions ( [ xsd:minInclusive 0.0
+                                                                                                                   ]
+                                                                                                                   [ xsd:maxInclusive 10.0
+                                                                                                                   ]
+                                                                                                                 )
+                                                                                          ] ;
+                                                                               rdfs:comment "CVSS v3.1 base score (0.0-10.0). Functional: one base score per vulnerability record."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCVSSVector
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCVSSVector> rdf:type owl:DatatypeProperty ;
+                                                                                rdfs:domain <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Vulnerability> ;
+                                                                                rdfs:range xsd:string ;
+                                                                                rdfs:comment "CVSS v3.1 vector string."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCriticality
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCriticality> rdf:type owl:DatatypeProperty ,
+                                                                                          owl:FunctionalProperty ;
+                                                                                 rdfs:domain <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CyberAsset> ;
+                                                                                 rdfs:range [ rdf:type rdfs:Datatype ;
+                                                                                              owl:oneOf [ rdf:type rdf:List ;
+                                                                                                          rdf:first "High" ;
+                                                                                                          rdf:rest [ rdf:type rdf:List ;
+                                                                                                                     rdf:first "Low" ;
+                                                                                                                     rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                rdf:first "Moderate" ;
+                                                                                                                                rdf:rest rdf:nil
+                                                                                                                              ]
+                                                                                                                   ]
+                                                                                                        ]
+                                                                                            ] ;
+                                                                                 rdfs:comment "Business criticality of an asset expressed as a FIPS 199 potential-impact level. Functional."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasHostname
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasHostname> rdf:type owl:DatatypeProperty ;
+                                                                              rdfs:domain <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CyberAsset> ;
+                                                                              rdfs:range xsd:string ;
+                                                                              rdfs:comment "Host name of an asset."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasIPAddress
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasIPAddress> rdf:type owl:DatatypeProperty ;
+                                                                               rdfs:domain <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CyberAsset> ;
+                                                                               rdfs:range xsd:string ;
+                                                                               rdfs:comment "IP address of an asset."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasStatus
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasStatus> rdf:type owl:DatatypeProperty ;
+                                                                            rdfs:domain [ rdf:type owl:Class ;
+                                                                                          owl:unionOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Alert>
+                                                                                                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident>
+                                                                                                      )
+                                                                                        ] ;
+                                                                            rdfs:range xsd:string ;
+                                                                            rdfs:comment "Workflow status, e.g. Open or Closed."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasTimestamp
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasTimestamp> rdf:type owl:DatatypeProperty ;
+                                                                               rdfs:domain [ rdf:type owl:Class ;
+                                                                                             owl:unionOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Alert>
+                                                                                                           <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident>
+                                                                                                         )
+                                                                                           ] ;
+                                                                               rdfs:range xsd:dateTime ;
+                                                                               rdfs:comment "Time the incident or alert was recorded (v1 used xsd:string)."@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Actor
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Actor> rdf:type owl:Class ;
+                                                                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" ;
+                                                                        rdfs:comment "An agent involved in a security event."@en ;
+                                                                        skos:closeMatch "STIX 2.1 identity / threat-actor" ,
+                                                                                        "UCO uco:Attacker (for ThreatActor)" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Alert
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Alert> rdf:type owl:Class ;
+                                                                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" ;
+                                                                        rdfs:comment "A notification raised by a security control."@en ;
+                                                                        skos:closeMatch "STIX 2.1 sighting SRO" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Antivirus
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Antivirus> rdf:type owl:Class ;
+                                                                            rdfs:subClassOf <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/SecurityControl> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Application
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Application> rdf:type owl:Class ;
+                                                                              rdfs:subClassOf <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CyberAsset> ;
+                                                                              <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTactic
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTactic> rdf:type owl:Class ;
+                                                                               <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "reused" ;
+                                                                               rdfs:comment "A MITRE ATT&CK tactic (adversary goal)."@en ;
+                                                                               rdfs:seeAlso <https://attack.mitre.org/tactics/enterprise/> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTechnique
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTechnique> rdf:type owl:Class ;
+                                                                                  <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "reused" ;
+                                                                                  rdfs:comment "A MITRE ATT&CK technique (how a goal is achieved)."@en ;
+                                                                                  rdfs:seeAlso <https://attack.mitre.org/techniques/enterprise/> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BackupSystem
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BackupSystem> rdf:type owl:Class ;
+                                                                               rdfs:subClassOf <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/SecurityControl> ;
+                                                                               <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BruteForceAttack
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BruteForceAttack> rdf:type owl:Class ;
+                                                                                   rdfs:subClassOf [ owl:intersectionOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Threat>
+                                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                                            owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/usesTechnique> ;
+                                                                                                                            owl:hasValue <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1110>
+                                                                                                                          ]
+                                                                                                                        ) ;
+                                                                                                     rdf:type owl:Class
+                                                                                                   ] ;
+                                                                                   <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" ;
+                                                                                   rdfs:seeAlso <https://attack.mitre.org/techniques/T1110/> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CriticalAsset
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CriticalAsset> rdf:type owl:Class ;
+                                                                                owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CyberAsset>
+                                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                                             owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCriticality> ;
+                                                                                                                             owl:hasValue "High"
+                                                                                                                           ]
+                                                                                                                         ) ;
+                                                                                                      rdf:type owl:Class
+                                                                                                    ] ;
+                                                                                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "extended" ;
+                                                                                rdfs:comment "Asset whose compromise would have a severe or catastrophic adverse effect (FIPS 199 HIGH). Defined, not tagged (v1 asserted it)."@en ;
+                                                                                rdfs:seeAlso <https://doi.org/10.6028/NIST.FIPS.199> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CriticalVulnerability
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CriticalVulnerability> rdf:type owl:Class ;
+                                                                                        owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Vulnerability>
+                                                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                                                     owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCVSSScore> ;
+                                                                                                                                     owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                                                                                                          owl:onDatatype xsd:decimal ;
+                                                                                                                                                          owl:withRestrictions ( [ xsd:minInclusive 9.0
+                                                                                                                                                                                 ]
+                                                                                                                                                                               )
+                                                                                                                                                        ]
+                                                                                                                                   ]
+                                                                                                                                 ) ;
+                                                                                                              rdf:type owl:Class
+                                                                                                            ] ;
+                                                                                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "reused" ;
+                                                                                        rdfs:comment "CVSS v3.1 rating Critical."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CyberAsset
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CyberAsset> rdf:type owl:Class ;
+                                                                             <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" ;
+                                                                             rdfs:comment "Any digital resource of value to the organisation."@en ;
+                                                                             skos:closeMatch "NIST CSF 2.0 ID.AM (asset inventory); STIX 2.1 infrastructure SDO" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/DDoSAttack
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/DDoSAttack> rdf:type owl:Class ;
+                                                                             rdfs:subClassOf [ owl:intersectionOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Threat>
+                                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                                      owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/usesTechnique> ;
+                                                                                                                      owl:hasValue <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1498>
+                                                                                                                    ]
+                                                                                                                  ) ;
+                                                                                               rdf:type owl:Class
+                                                                                             ] ;
+                                                                             <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" ;
+                                                                             rdfs:seeAlso <https://attack.mitre.org/techniques/T1498/> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/DDoSMitigationService
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/DDoSMitigationService> rdf:type owl:Class ;
+                                                                                        rdfs:subClassOf <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/SecurityControl> ;
+                                                                                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Database
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Database> rdf:type owl:Class ;
+                                                                           rdfs:subClassOf <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CyberAsset> ;
+                                                                           <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/ExternalAttacker
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/ExternalAttacker> rdf:type owl:Class ;
+                                                                                   rdfs:subClassOf <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/ThreatActor> ;
+                                                                                   owl:disjointWith <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Insider> ;
+                                                                                   <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" ;
+                                                                                   rdfs:comment "A threat actor outside the organisation."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/FirewallRule
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/FirewallRule> rdf:type owl:Class ;
+                                                                               rdfs:subClassOf <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/SecurityControl> ;
+                                                                               <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/HighImpactThreat
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/HighImpactThreat> rdf:type owl:Class ;
+                                                                                   owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Threat>
+                                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                                owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/usesTechnique> ;
+                                                                                                                                owl:someValuesFrom <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/ImpactTechnique>
+                                                                                                                              ]
+                                                                                                                            ) ;
+                                                                                                         rdf:type owl:Class
+                                                                                                       ] ;
+                                                                                   <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "new" ;
+                                                                                   rdfs:comment "Threat employing at least one ATT&CK Impact technique."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/HighSeverityIncident
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/HighSeverityIncident> rdf:type owl:Class ;
+                                                                                       owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident>
+                                                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                                                    owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/affectsAsset> ;
+                                                                                                                                    owl:someValuesFrom <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CriticalAsset>
+                                                                                                                                  ]
+                                                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                                                    owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/involvesThreat> ;
+                                                                                                                                    owl:someValuesFrom <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/SevereThreat>
+                                                                                                                                  ]
+                                                                                                                                ) ;
+                                                                                                             rdf:type owl:Class
+                                                                                                           ] ;
+                                                                                       <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "new" ;
+                                                                                       rdfs:comment "Matrix cell: critical asset x severe threat."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/ImpactTechnique
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/ImpactTechnique> rdf:type owl:Class ;
+                                                                                  owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTechnique>
+                                                                                                                             [ rdf:type owl:Restriction ;
+                                                                                                                               owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/partOfTactic> ;
+                                                                                                                               owl:hasValue <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0040>
+                                                                                                                             ]
+                                                                                                                           ) ;
+                                                                                                        rdf:type owl:Class
+                                                                                                      ] ;
+                                                                                  <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "new" ;
+                                                                                  rdfs:comment "Technique listed under the ATT&CK Impact tactic (TA0040): it directly degrades availability or integrity."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident> rdf:type owl:Class ;
+                                                                           <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" ;
+                                                                           rdfs:comment "An occurrence that jeopardises an asset (NIST SP 800-61)."@en ;
+                                                                           skos:closeMatch "STIX 2.1 incident SDO" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Insider
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Insider> rdf:type owl:Class ;
+                                                                          rdfs:subClassOf <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/ThreatActor> ;
+                                                                          <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" ;
+                                                                          rdfs:comment "A threat actor inside the organisation."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/LowCriticalityAsset
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/LowCriticalityAsset> rdf:type owl:Class ;
+                                                                                      owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CyberAsset>
+                                                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                                                   owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCriticality> ;
+                                                                                                                                   owl:hasValue "Low"
+                                                                                                                                 ]
+                                                                                                                               ) ;
+                                                                                                            rdf:type owl:Class
+                                                                                                          ] ;
+                                                                                      <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "extended" ;
+                                                                                      rdfs:comment "FIPS 199 LOW asset."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/LowSeverityIncident
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/LowSeverityIncident> rdf:type owl:Class ;
+                                                                                      owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident>
+                                                                                                                                 [ rdf:type owl:Class ;
+                                                                                                                                   owl:unionOf ( [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                                                                          owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/involvesThreat> ;
+                                                                                                                                                                          owl:someValuesFrom <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/SevereThreat>
+                                                                                                                                                                        ]
+                                                                                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                                                                                          owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/affectsAsset> ;
+                                                                                                                                                                          owl:allValuesFrom <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/LowCriticalityAsset>
+                                                                                                                                                                        ]
+                                                                                                                                                                      ) ;
+                                                                                                                                                   rdf:type owl:Class
+                                                                                                                                                 ]
+                                                                                                                                                 [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                                                                          owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/affectsAsset> ;
+                                                                                                                                                                          owl:allValuesFrom <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/NonCriticalAsset>
+                                                                                                                                                                        ]
+                                                                                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                                                                                          owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/involvesThreat> ;
+                                                                                                                                                                          owl:allValuesFrom <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/NonSevereThreat>
+                                                                                                                                                                        ]
+                                                                                                                                                                      ) ;
+                                                                                                                                                   rdf:type owl:Class
+                                                                                                                                                 ]
+                                                                                                                                               )
+                                                                                                                                 ]
+                                                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                                                   owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/affectsAsset> ;
+                                                                                                                                   owl:someValuesFrom <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CyberAsset>
+                                                                                                                                 ]
+                                                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                                                   owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/involvesThreat> ;
+                                                                                                                                   owl:someValuesFrom <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Threat>
+                                                                                                                                 ]
+                                                                                                                               ) ;
+                                                                                                            rdf:type owl:Class
+                                                                                                          ] ;
+                                                                                      <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "new" ;
+                                                                                      rdfs:comment "Matrix cells: moderate/low asset x non-severe threat; low asset x severe threat."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/MalwareAttack
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/MalwareAttack> rdf:type owl:Class ;
+                                                                                rdfs:subClassOf <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Threat> ;
+                                                                                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/MediumSeverityIncident
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/MediumSeverityIncident> rdf:type owl:Class ;
+                                                                                         owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident>
+                                                                                                                                    [ rdf:type owl:Class ;
+                                                                                                                                      owl:unionOf ( [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                                                                             owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/affectsAsset> ;
+                                                                                                                                                                             owl:someValuesFrom <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CriticalAsset>
+                                                                                                                                                                           ]
+                                                                                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                                                                                             owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/involvesThreat> ;
+                                                                                                                                                                             owl:someValuesFrom <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Threat>
+                                                                                                                                                                           ]
+                                                                                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                                                                                             owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/involvesThreat> ;
+                                                                                                                                                                             owl:allValuesFrom <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/NonSevereThreat>
+                                                                                                                                                                           ]
+                                                                                                                                                                         ) ;
+                                                                                                                                                      rdf:type owl:Class
+                                                                                                                                                    ]
+                                                                                                                                                    [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                                                                             owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/affectsAsset> ;
+                                                                                                                                                                             owl:someValuesFrom <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/ModerateCriticalityAsset>
+                                                                                                                                                                           ]
+                                                                                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                                                                                             owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/involvesThreat> ;
+                                                                                                                                                                             owl:someValuesFrom <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/SevereThreat>
+                                                                                                                                                                           ]
+                                                                                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                                                                                             owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/affectsAsset> ;
+                                                                                                                                                                             owl:allValuesFrom <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/NonCriticalAsset>
+                                                                                                                                                                           ]
+                                                                                                                                                                         ) ;
+                                                                                                                                                      rdf:type owl:Class
+                                                                                                                                                    ]
+                                                                                                                                                  )
+                                                                                                                                    ]
+                                                                                                                                  ) ;
+                                                                                                               rdf:type owl:Class
+                                                                                                             ] ;
+                                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "new" ;
+                                                                                         rdfs:comment "Matrix cells: critical asset x non-severe threat; moderate asset x severe threat."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Misconfiguration
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Misconfiguration> rdf:type owl:Class ;
+                                                                                   rdfs:subClassOf <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Vulnerability> ;
+                                                                                   <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/ModerateCriticalityAsset
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/ModerateCriticalityAsset> rdf:type owl:Class ;
+                                                                                           owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CyberAsset>
+                                                                                                                                      [ rdf:type owl:Restriction ;
+                                                                                                                                        owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCriticality> ;
+                                                                                                                                        owl:hasValue "Moderate"
+                                                                                                                                      ]
+                                                                                                                                    ) ;
+                                                                                                                 rdf:type owl:Class
+                                                                                                               ] ;
+                                                                                           <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "extended" ;
+                                                                                           rdfs:comment "FIPS 199 MODERATE asset."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/MultiFactorAuthentication
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/MultiFactorAuthentication> rdf:type owl:Class ;
+                                                                                            rdfs:subClassOf <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/SecurityControl> ;
+                                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/NetworkDevice
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/NetworkDevice> rdf:type owl:Class ;
+                                                                                rdfs:subClassOf <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CyberAsset> ;
+                                                                                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/NonCriticalAsset
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/NonCriticalAsset> rdf:type owl:Class ;
+                                                                                   owl:equivalentClass [ rdf:type owl:Class ;
+                                                                                                         owl:unionOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/LowCriticalityAsset>
+                                                                                                                       <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/ModerateCriticalityAsset>
+                                                                                                                     )
+                                                                                                       ] ;
+                                                                                   <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "new" ;
+                                                                                   rdfs:comment "Asset of moderate or low criticality."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/NonImpactTechnique
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/NonImpactTechnique> rdf:type owl:Class ;
+                                                                                     owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTechnique>
+                                                                                                                                [ rdf:type owl:Restriction ;
+                                                                                                                                  owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/partOfTactic> ;
+                                                                                                                                  owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                                                                      owl:complementOf [ rdf:type owl:Class ;
+                                                                                                                                                                         owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0040>
+                                                                                                                                                                                   )
+                                                                                                                                                                       ]
+                                                                                                                                                    ]
+                                                                                                                                ]
+                                                                                                                              ) ;
+                                                                                                           rdf:type owl:Class
+                                                                                                         ] ;
+                                                                                     <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "new" ;
+                                                                                     rdfs:comment "Technique none of whose tactics is Impact. Requires a closure axiom on the technique."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/NonSevereThreat
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/NonSevereThreat> rdf:type owl:Class ;
+                                                                                  owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Threat>
+                                                                                                                             [ rdf:type owl:Restriction ;
+                                                                                                                               owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/exploitsVulnerability> ;
+                                                                                                                               owl:allValuesFrom <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/NonSevereVulnerability>
+                                                                                                                             ]
+                                                                                                                             [ rdf:type owl:Restriction ;
+                                                                                                                               owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/usesTechnique> ;
+                                                                                                                               owl:allValuesFrom <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/NonImpactTechnique>
+                                                                                                                             ]
+                                                                                                                           ) ;
+                                                                                                        rdf:type owl:Class
+                                                                                                      ] ;
+                                                                                  <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "new" ;
+                                                                                  rdfs:comment "Threat known (under closure) to use no Impact technique and to exploit only Low/Medium CVSS vulnerabilities."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/NonSevereVulnerability
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/NonSevereVulnerability> rdf:type owl:Class ;
+                                                                                         owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Vulnerability>
+                                                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                                                      owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCVSSScore> ;
+                                                                                                                                      owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                                                                                                           owl:onDatatype xsd:decimal ;
+                                                                                                                                                           owl:withRestrictions ( [ xsd:maxExclusive 7.0
+                                                                                                                                                                                  ]
+                                                                                                                                                                                )
+                                                                                                                                                         ]
+                                                                                                                                    ]
+                                                                                                                                  ) ;
+                                                                                                               rdf:type owl:Class
+                                                                                                             ] ;
+                                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "reused" ;
+                                                                                         rdfs:comment "CVSS v3.1 rating None/Low/Medium (< 7.0)."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/OpenPort
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/OpenPort> rdf:type owl:Class ;
+                                                                           rdfs:subClassOf <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Vulnerability> ;
+                                                                           <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/PhishingAttack
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/PhishingAttack> rdf:type owl:Class ;
+                                                                                 rdfs:subClassOf [ owl:intersectionOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Threat>
+                                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                                          owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/usesTechnique> ;
+                                                                                                                          owl:hasValue <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1566>
+                                                                                                                        ]
+                                                                                                                      ) ;
+                                                                                                   rdf:type owl:Class
+                                                                                                 ] ;
+                                                                                 <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" ;
+                                                                                 rdfs:seeAlso <https://attack.mitre.org/techniques/T1566/> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/RansomwareAttack
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/RansomwareAttack> rdf:type owl:Class ;
+                                                                                   rdfs:subClassOf [ owl:intersectionOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/MalwareAttack>
+                                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                                            owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/usesTechnique> ;
+                                                                                                                            owl:hasValue <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1486>
+                                                                                                                          ]
+                                                                                                                        ) ;
+                                                                                                     rdf:type owl:Class
+                                                                                                   ] ;
+                                                                                   owl:disjointWith <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TrojanAttack> ;
+                                                                                   <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" ;
+                                                                                   rdfs:seeAlso <https://attack.mitre.org/techniques/T1486/> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/SecurityAwarenessTraining
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/SecurityAwarenessTraining> rdf:type owl:Class ;
+                                                                                            rdfs:subClassOf <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/SecurityControl> ;
+                                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/SecurityControl
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/SecurityControl> rdf:type owl:Class ;
+                                                                                  <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" ;
+                                                                                  rdfs:comment "A technical or organisational safeguard."@en ;
+                                                                                  skos:closeMatch "STIX 2.1 course-of-action SDO; NIST SP 800-53 control" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Server
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Server> rdf:type owl:Class ;
+                                                                         rdfs:subClassOf <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CyberAsset> ;
+                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/SevereThreat
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/SevereThreat> rdf:type owl:Class ;
+                                                                               owl:equivalentClass [ rdf:type owl:Class ;
+                                                                                                     owl:unionOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/HighImpactThreat>
+                                                                                                                   [ owl:intersectionOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Threat>
+                                                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                                                            owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/exploitsVulnerability> ;
+                                                                                                                                            owl:someValuesFrom <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/SevereVulnerability>
+                                                                                                                                          ]
+                                                                                                                                        ) ;
+                                                                                                                     rdf:type owl:Class
+                                                                                                                   ]
+                                                                                                                 )
+                                                                                                   ] ;
+                                                                               <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "new" ;
+                                                                               rdfs:comment "Threat that has high impact (ATT&CK) or exploits a High/Critical CVSS vulnerability."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/SevereVulnerability
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/SevereVulnerability> rdf:type owl:Class ;
+                                                                                      owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Vulnerability>
+                                                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                                                   owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCVSSScore> ;
+                                                                                                                                   owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                                                                                                        owl:onDatatype xsd:decimal ;
+                                                                                                                                                        owl:withRestrictions ( [ xsd:minInclusive 7.0
+                                                                                                                                                                               ]
+                                                                                                                                                                             )
+                                                                                                                                                      ]
+                                                                                                                                 ]
+                                                                                                                               ) ;
+                                                                                                            rdf:type owl:Class
+                                                                                                          ] ;
+                                                                                      <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "reused" ;
+                                                                                      rdfs:comment "CVSS v3.1 qualitative rating High (7.0-8.9) or Critical (9.0-10.0)."@en ;
+                                                                                      rdfs:seeAlso <https://www.first.org/cvss/v3.1/specification-document> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Threat
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Threat> rdf:type owl:Class ;
+                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" ;
+                                                                         rdfs:comment "A realised or attempted malicious activity (an attack)."@en ;
+                                                                         skos:closeMatch "UCO uco:Attack; STIX 2.1 attack-pattern SDO" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/ThreatActor
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/ThreatActor> rdf:type owl:Class ;
+                                                                              rdfs:subClassOf <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Actor> ;
+                                                                              <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" ;
+                                                                              rdfs:comment "An actor with malicious intent."@en ;
+                                                                              skos:closeMatch "STIX 2.1 threat-actor SDO" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TrojanAttack
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TrojanAttack> rdf:type owl:Class ;
+                                                                               rdfs:subClassOf [ owl:intersectionOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/MalwareAttack>
+                                                                                                                      [ rdf:type owl:Restriction ;
+                                                                                                                        owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/usesTechnique> ;
+                                                                                                                        owl:hasValue <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1204>
+                                                                                                                      ]
+                                                                                                                    ) ;
+                                                                                                 rdf:type owl:Class
+                                                                                               ] ;
+                                                                               <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" ;
+                                                                               rdfs:seeAlso <https://attack.mitre.org/techniques/T1204/> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/UnpatchedSoftware
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/UnpatchedSoftware> rdf:type owl:Class ;
+                                                                                    rdfs:subClassOf <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Vulnerability> ;
+                                                                                    <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/UserAccount
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/UserAccount> rdf:type owl:Class ;
+                                                                              rdfs:subClassOf <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CyberAsset> ;
+                                                                              <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Vulnerability
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Vulnerability> rdf:type owl:Class ;
+                                                                                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" ;
+                                                                                rdfs:comment "A weakness that a threat can exploit."@en ;
+                                                                                skos:closeMatch "UCO uco:Vulnerability; STIX 2.1 vulnerability SDO; CVE record" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WeakPassword
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WeakPassword> rdf:type owl:Class ;
+                                                                               rdfs:subClassOf <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Vulnerability> ;
+                                                                               <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Workstation
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Workstation> rdf:type owl:Class ;
+                                                                              rdfs:subClassOf <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CyberAsset> ;
+                                                                              <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/alignmentType> "aligned" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AV5
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AV5> rdf:type owl:NamedIndividual ,
+                                                                               <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Antivirus> ;
+                                                                      <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/mitigatesThreat> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TrojanAttack5> ;
+                                                                      <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/protectsAsset> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/KioskWS5> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AdminAccount3
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AdminAccount3> rdf:type owl:NamedIndividual ,
+                                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/UserAccount> ;
+                                                                                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasVulnerability> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WeakPassword3> ;
+                                                                                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCriticality> "High" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Alert1
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Alert1> rdf:type owl:NamedIndividual ,
+                                                                                  <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Alert> ;
+                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/generatedBy> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/EDR1> ;
+                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/reportsIncident> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident1> ;
+                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasStatus> "Open" ;
+                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasTimestamp> "2025-11-24T09:28:00Z"^^xsd:dateTime .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Alert3
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Alert3> rdf:type owl:NamedIndividual ,
+                                                                                  <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Alert> ;
+                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/generatedBy> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/MFA3> ;
+                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/reportsIncident> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident3> ;
+                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasStatus> "Open" ;
+                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasTimestamp> "2025-11-26T02:44:00Z"^^xsd:dateTime .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Alert4
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Alert4> rdf:type owl:NamedIndividual ,
+                                                                                  <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Alert> ;
+                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/generatedBy> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/DDoSShield4> ;
+                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/reportsIncident> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident4> ;
+                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasStatus> "Open" ;
+                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasTimestamp> "2025-11-27T12:58:00Z"^^xsd:dateTime .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Attacker1
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Attacker1> rdf:type owl:NamedIndividual ,
+                                                                                     <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/ExternalAttacker> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AwarenessTraining2
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AwarenessTraining2> rdf:type owl:NamedIndividual ,
+                                                                                              <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/SecurityAwarenessTraining> ;
+                                                                                     <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/mitigatesThreat> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/PhishingAttack2> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BackupSystem1
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BackupSystem1> rdf:type owl:NamedIndividual ,
+                                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BackupSystem> ;
+                                                                                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/mitigatesThreat> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/RansomwareAttack1> ;
+                                                                                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/protectsAsset> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CriticalServer1> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BackupSystem7
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BackupSystem7> rdf:type owl:NamedIndividual ,
+                                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BackupSystem> ;
+                                                                                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/mitigatesThreat> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/RansomwareAttack7> ;
+                                                                                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/protectsAsset> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/FileServer7> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BruteForceAttack3
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BruteForceAttack3> rdf:type owl:NamedIndividual ,
+                                                                                             <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BruteForceAttack> ,
+                                                                                             [ rdf:type owl:Restriction ;
+                                                                                               owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/exploitsVulnerability> ;
+                                                                                               owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                                   owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WeakPassword3>
+                                                                                                                             )
+                                                                                                                 ]
+                                                                                             ] ,
+                                                                                             [ rdf:type owl:Restriction ;
+                                                                                               owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/usesTechnique> ;
+                                                                                               owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                                   owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1078>
+                                                                                                                               <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1110>
+                                                                                                                             )
+                                                                                                                 ]
+                                                                                             ] ;
+                                                                                    <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/exploitsVulnerability> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WeakPassword3> ;
+                                                                                    <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/targetsAsset> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AdminAccount3> ;
+                                                                                    <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/usesTechnique> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1078> ,
+                                                                                                                                                                    <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1110> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BruteForceAttack6
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BruteForceAttack6> rdf:type owl:NamedIndividual ,
+                                                                                             <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BruteForceAttack> ,
+                                                                                             [ rdf:type owl:Restriction ;
+                                                                                               owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/exploitsVulnerability> ;
+                                                                                               owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                                   owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/OpenSSH6>
+                                                                                                                               <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WeakPassword6>
+                                                                                                                             )
+                                                                                                                 ]
+                                                                                             ] ,
+                                                                                             [ rdf:type owl:Restriction ;
+                                                                                               owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/usesTechnique> ;
+                                                                                               owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                                   owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1110>
+                                                                                                                             )
+                                                                                                                 ]
+                                                                                             ] ;
+                                                                                    <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/exploitsVulnerability> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/OpenSSH6> ,
+                                                                                                                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WeakPassword6> ;
+                                                                                    <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/targetsAsset> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TestServer6> ;
+                                                                                    <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/usesTechnique> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1110> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BruteForceAttack7
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BruteForceAttack7> rdf:type owl:NamedIndividual ,
+                                                                                             <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BruteForceAttack> ,
+                                                                                             [ rdf:type owl:Restriction ;
+                                                                                               owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/exploitsVulnerability> ;
+                                                                                               owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                                   owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WeakPassword7>
+                                                                                                                             )
+                                                                                                                 ]
+                                                                                             ] ,
+                                                                                             [ rdf:type owl:Restriction ;
+                                                                                               owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/usesTechnique> ;
+                                                                                               owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                                   owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1110>
+                                                                                                                             )
+                                                                                                                 ]
+                                                                                             ] ;
+                                                                                    <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/exploitsVulnerability> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WeakPassword7> ;
+                                                                                    <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/targetsAsset> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/FileServer7> ;
+                                                                                    <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/usesTechnique> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1110> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CriticalServer1
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CriticalServer1> rdf:type owl:NamedIndividual ,
+                                                                                           <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Server> ;
+                                                                                  <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasVulnerability> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/UnpatchedDB1> ;
+                                                                                  <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCriticality> "High" ;
+                                                                                  <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasHostname> "prod-db-01" ;
+                                                                                  <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasIPAddress> "10.0.0.10" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/DDoSAttack4
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/DDoSAttack4> rdf:type owl:NamedIndividual ,
+                                                                                       <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/DDoSAttack> ,
+                                                                                       [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/exploitsVulnerability> ;
+                                                                                         owl:allValuesFrom owl:Nothing
+                                                                                       ] ,
+                                                                                       [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/usesTechnique> ;
+                                                                                         owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                             owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1498>
+                                                                                                                       )
+                                                                                                           ]
+                                                                                       ] ;
+                                                                              <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/targetsAsset> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WebPortal4> ;
+                                                                              <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/usesTechnique> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1498> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/DDoSShield4
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/DDoSShield4> rdf:type owl:NamedIndividual ,
+                                                                                       <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/DDoSMitigationService> ;
+                                                                              <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/mitigatesThreat> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/DDoSAttack4> ;
+                                                                              <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/protectsAsset> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WebPortal4> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/DevWS8
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/DevWS8> rdf:type owl:NamedIndividual ,
+                                                                                  <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Workstation> ;
+                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasHostname> "dev-ws-08" ;
+                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasIPAddress> "10.0.7.8" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/EDR1
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/EDR1> rdf:type owl:NamedIndividual ,
+                                                                                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Antivirus> ;
+                                                                       <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/protectsAsset> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CriticalServer1> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/FileServer7
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/FileServer7> rdf:type owl:NamedIndividual ,
+                                                                                       <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Server> ;
+                                                                              <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasVulnerability> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/UnpatchedSMB7> ,
+                                                                                                                                                                 <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WeakPassword7> ;
+                                                                              <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCriticality> "High" ;
+                                                                              <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasHostname> "fs-01" ;
+                                                                              <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasIPAddress> "10.0.0.20" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/FinanceWS2
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/FinanceWS2> rdf:type owl:NamedIndividual ,
+                                                                                      <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Workstation> ;
+                                                                             <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasVulnerability> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/MacroPolicy2> ;
+                                                                             <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCriticality> "Moderate" ;
+                                                                             <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasHostname> "fin-ws-12" ;
+                                                                             <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasIPAddress> "10.0.2.12" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Firewall6
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Firewall6> rdf:type owl:NamedIndividual ,
+                                                                                     <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/FirewallRule> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/mitigatesVulnerability> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/OpenSSH6> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/protectsAsset> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TestServer6> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident1
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident1> rdf:type owl:NamedIndividual ,
+                                                                                     <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident> ,
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/affectsAsset> ;
+                                                                                       owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                           owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CriticalServer1>
+                                                                                                                     )
+                                                                                                         ]
+                                                                                     ] ,
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/involvesThreat> ;
+                                                                                       owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                           owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/RansomwareAttack1>
+                                                                                                                     )
+                                                                                                         ]
+                                                                                     ] ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/affectsAsset> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CriticalServer1> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/causedBy> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Attacker1> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/involvesThreat> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/RansomwareAttack1> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasStatus> "Open" ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasTimestamp> "2025-11-24T09:30:00Z"^^xsd:dateTime ;
+                                                                            rdfs:comment "S1: ransomware against the production database server (v1 case study)."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident2
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident2> rdf:type owl:NamedIndividual ,
+                                                                                     <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident> ,
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/affectsAsset> ;
+                                                                                       owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                           owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/FinanceWS2>
+                                                                                                                     )
+                                                                                                         ]
+                                                                                     ] ,
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/involvesThreat> ;
+                                                                                       owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                           owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/PhishingAttack2>
+                                                                                                                     )
+                                                                                                         ]
+                                                                                     ] ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/affectsAsset> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/FinanceWS2> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/causedBy> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Attacker1> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/involvesThreat> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/PhishingAttack2> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasStatus> "Open" ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasTimestamp> "2025-11-25T08:10:00Z"^^xsd:dateTime ;
+                                                                            rdfs:comment "S2: phishing e-mail with a malicious macro against a finance workstation."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident3
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident3> rdf:type owl:NamedIndividual ,
+                                                                                     <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident> ,
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/affectsAsset> ;
+                                                                                       owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                           owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AdminAccount3>
+                                                                                                                     )
+                                                                                                         ]
+                                                                                     ] ,
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/involvesThreat> ;
+                                                                                       owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                           owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BruteForceAttack3>
+                                                                                                                     )
+                                                                                                         ]
+                                                                                     ] ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/affectsAsset> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AdminAccount3> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/causedBy> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Attacker1> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/involvesThreat> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BruteForceAttack3> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasStatus> "Open" ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasTimestamp> "2025-11-26T02:45:00Z"^^xsd:dateTime ;
+                                                                            rdfs:comment "S3: password brute force against a database administrator account."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident4
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident4> rdf:type owl:NamedIndividual ,
+                                                                                     <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident> ,
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/affectsAsset> ;
+                                                                                       owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                           owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WebPortal4>
+                                                                                                                     )
+                                                                                                         ]
+                                                                                     ] ,
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/involvesThreat> ;
+                                                                                       owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                           owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/DDoSAttack4>
+                                                                                                                     )
+                                                                                                         ]
+                                                                                     ] ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/affectsAsset> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WebPortal4> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/causedBy> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Attacker1> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/involvesThreat> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/DDoSAttack4> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasStatus> "Open" ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasTimestamp> "2025-11-27T13:00:00Z"^^xsd:dateTime ;
+                                                                            rdfs:comment "S4: volumetric DDoS against the customer-facing portal."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident5
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident5> rdf:type owl:NamedIndividual ,
+                                                                                     <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident> ,
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/affectsAsset> ;
+                                                                                       owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                           owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/KioskWS5>
+                                                                                                                     )
+                                                                                                         ]
+                                                                                     ] ,
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/involvesThreat> ;
+                                                                                       owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                           owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TrojanAttack5>
+                                                                                                                     )
+                                                                                                         ]
+                                                                                     ] ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/affectsAsset> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/KioskWS5> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/causedBy> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Attacker1> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/involvesThreat> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TrojanAttack5> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasStatus> "Closed" ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasTimestamp> "2025-11-28T10:20:00Z"^^xsd:dateTime ;
+                                                                            rdfs:comment "S5: trojan executed on a lobby kiosk with an unpatched browser."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident6
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident6> rdf:type owl:NamedIndividual ,
+                                                                                     <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident> ,
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/affectsAsset> ;
+                                                                                       owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                           owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TestServer6>
+                                                                                                                     )
+                                                                                                         ]
+                                                                                     ] ,
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/involvesThreat> ;
+                                                                                       owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                           owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BruteForceAttack6>
+                                                                                                                     )
+                                                                                                         ]
+                                                                                     ] ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/affectsAsset> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TestServer6> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/causedBy> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Insider6> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/involvesThreat> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BruteForceAttack6> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasStatus> "Closed" ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasTimestamp> "2025-11-29T22:05:00Z"^^xsd:dateTime ;
+                                                                            rdfs:comment "S6: SSH password guessing against a test server by an insider."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident7
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident7> rdf:type owl:NamedIndividual ,
+                                                                                     <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident> ,
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/affectsAsset> ;
+                                                                                       owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                           owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/FileServer7>
+                                                                                                                     )
+                                                                                                         ]
+                                                                                     ] ,
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/involvesThreat> ;
+                                                                                       owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                           owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BruteForceAttack7>
+                                                                                                                       <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/RansomwareAttack7>
+                                                                                                                     )
+                                                                                                         ]
+                                                                                     ] ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/affectsAsset> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/FileServer7> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/causedBy> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Attacker1> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/involvesThreat> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BruteForceAttack7> ,
+                                                                                                                                                             <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/RansomwareAttack7> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasStatus> "Open" ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasTimestamp> "2025-11-30T04:15:00Z"^^xsd:dateTime ;
+                                                                            rdfs:comment "S7: multi-stage incident (brute force, then ransomware) on a critical file server."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident8
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident8> rdf:type owl:NamedIndividual ,
+                                                                                     <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/affectsAsset> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/DevWS8> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/involvesThreat> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/MalwareAttack8> ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasStatus> "Open" ;
+                                                                            <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasTimestamp> "2025-12-01T11:00:00Z"^^xsd:dateTime ;
+                                                                            rdfs:comment "S8: incomplete record - unknown malware, criticality not recorded, record not closed."@en .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Insider6
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Insider6> rdf:type owl:NamedIndividual ,
+                                                                                    <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Insider> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/KioskWS5
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/KioskWS5> rdf:type owl:NamedIndividual ,
+                                                                                    <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Workstation> ;
+                                                                           <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasVulnerability> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/UnpatchedBrowser5> ;
+                                                                           <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCriticality> "Low" ;
+                                                                           <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasHostname> "lobby-kiosk-01" ;
+                                                                           <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasIPAddress> "10.0.9.5" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/MFA3
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/MFA3> rdf:type owl:NamedIndividual ,
+                                                                                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/MultiFactorAuthentication> ;
+                                                                       <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/mitigatesThreat> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BruteForceAttack3> ;
+                                                                       <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/mitigatesVulnerability> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WeakPassword3> ;
+                                                                       <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/protectsAsset> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AdminAccount3> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/MacroPolicy2
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/MacroPolicy2> rdf:type owl:NamedIndividual ,
+                                                                                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Misconfiguration> ;
+                                                                               <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCVSSScore> 7.8 ;
+                                                                               <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCVSSVector> "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/MailGateway2
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/MailGateway2> rdf:type owl:NamedIndividual ,
+                                                                                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/FirewallRule> ;
+                                                                               <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/mitigatesVulnerability> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/MacroPolicy2> ;
+                                                                               <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/protectsAsset> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/FinanceWS2> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/MalwareAttack8
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/MalwareAttack8> rdf:type owl:NamedIndividual ,
+                                                                                          <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/MalwareAttack> ;
+                                                                                 <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/targetsAsset> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/DevWS8> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/OpenSSH6
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/OpenSSH6> rdf:type owl:NamedIndividual ,
+                                                                                    <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/OpenPort> ;
+                                                                           <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCVSSScore> 5.3 ;
+                                                                           <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCVSSVector> "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/PhishingAttack2
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/PhishingAttack2> rdf:type owl:NamedIndividual ,
+                                                                                           <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/PhishingAttack> ,
+                                                                                           [ rdf:type owl:Restriction ;
+                                                                                             owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/exploitsVulnerability> ;
+                                                                                             owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                                 owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/MacroPolicy2>
+                                                                                                                           )
+                                                                                                               ]
+                                                                                           ] ,
+                                                                                           [ rdf:type owl:Restriction ;
+                                                                                             owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/usesTechnique> ;
+                                                                                             owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                                 owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1204>
+                                                                                                                             <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1566>
+                                                                                                                           )
+                                                                                                               ]
+                                                                                           ] ;
+                                                                                  <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/exploitsVulnerability> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/MacroPolicy2> ;
+                                                                                  <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/targetsAsset> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/FinanceWS2> ;
+                                                                                  <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/usesTechnique> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1204> ,
+                                                                                                                                                                  <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1566> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/RansomwareAttack1
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/RansomwareAttack1> rdf:type owl:NamedIndividual ,
+                                                                                             <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/RansomwareAttack> ,
+                                                                                             [ rdf:type owl:Restriction ;
+                                                                                               owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/exploitsVulnerability> ;
+                                                                                               owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                                   owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/UnpatchedDB1>
+                                                                                                                             )
+                                                                                                                 ]
+                                                                                             ] ,
+                                                                                             [ rdf:type owl:Restriction ;
+                                                                                               owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/usesTechnique> ;
+                                                                                               owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                                   owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1190>
+                                                                                                                               <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1486>
+                                                                                                                               <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1490>
+                                                                                                                             )
+                                                                                                                 ]
+                                                                                             ] ;
+                                                                                    <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/exploitsVulnerability> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/UnpatchedDB1> ;
+                                                                                    <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/targetsAsset> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CriticalServer1> ;
+                                                                                    <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/usesTechnique> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1190> ,
+                                                                                                                                                                    <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1486> ,
+                                                                                                                                                                    <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1490> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/RansomwareAttack7
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/RansomwareAttack7> rdf:type owl:NamedIndividual ,
+                                                                                             <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/RansomwareAttack> ,
+                                                                                             [ rdf:type owl:Restriction ;
+                                                                                               owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/exploitsVulnerability> ;
+                                                                                               owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                                   owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/UnpatchedSMB7>
+                                                                                                                             )
+                                                                                                                 ]
+                                                                                             ] ,
+                                                                                             [ rdf:type owl:Restriction ;
+                                                                                               owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/usesTechnique> ;
+                                                                                               owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                                   owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1486>
+                                                                                                                             )
+                                                                                                                 ]
+                                                                                             ] ;
+                                                                                    <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/exploitsVulnerability> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/UnpatchedSMB7> ;
+                                                                                    <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/targetsAsset> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/FileServer7> ;
+                                                                                    <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/usesTechnique> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1486> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1078
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1078> rdf:type owl:NamedIndividual ,
+                                                                                 <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTechnique> ,
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/partOfTactic> ;
+                                                                                   owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                       owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0001>
+                                                                                                                   <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0003>
+                                                                                                                   <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0004>
+                                                                                                                   <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0005>
+                                                                                                                 )
+                                                                                                     ]
+                                                                                 ] ;
+                                                                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/partOfTactic> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0001> ,
+                                                                                                                                                       <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0003> ,
+                                                                                                                                                       <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0004> ,
+                                                                                                                                                       <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0005> ;
+                                                                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasAttackID> "T1078" ;
+                                                                        rdfs:label "Valid Accounts"@en ;
+                                                                        rdfs:seeAlso <https://attack.mitre.org/techniques/T1078/> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1110
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1110> rdf:type owl:NamedIndividual ,
+                                                                                 <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTechnique> ,
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/partOfTactic> ;
+                                                                                   owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                       owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0006>
+                                                                                                                 )
+                                                                                                     ]
+                                                                                 ] ;
+                                                                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/partOfTactic> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0006> ;
+                                                                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasAttackID> "T1110" ;
+                                                                        rdfs:label "Brute Force"@en ;
+                                                                        rdfs:seeAlso <https://attack.mitre.org/techniques/T1110/> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1190
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1190> rdf:type owl:NamedIndividual ,
+                                                                                 <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTechnique> ,
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/partOfTactic> ;
+                                                                                   owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                       owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0001>
+                                                                                                                 )
+                                                                                                     ]
+                                                                                 ] ;
+                                                                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/partOfTactic> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0001> ;
+                                                                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasAttackID> "T1190" ;
+                                                                        rdfs:label "Exploit Public-Facing Application"@en ;
+                                                                        rdfs:seeAlso <https://attack.mitre.org/techniques/T1190/> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1204
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1204> rdf:type owl:NamedIndividual ,
+                                                                                 <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTechnique> ,
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/partOfTactic> ;
+                                                                                   owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                       owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0002>
+                                                                                                                 )
+                                                                                                     ]
+                                                                                 ] ;
+                                                                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/partOfTactic> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0002> ;
+                                                                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasAttackID> "T1204" ;
+                                                                        rdfs:label "User Execution"@en ;
+                                                                        rdfs:seeAlso <https://attack.mitre.org/techniques/T1204/> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1486
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1486> rdf:type owl:NamedIndividual ,
+                                                                                 <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTechnique> ,
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/partOfTactic> ;
+                                                                                   owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                       owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0040>
+                                                                                                                 )
+                                                                                                     ]
+                                                                                 ] ;
+                                                                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/partOfTactic> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0040> ;
+                                                                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasAttackID> "T1486" ;
+                                                                        rdfs:label "Data Encrypted for Impact"@en ;
+                                                                        rdfs:seeAlso <https://attack.mitre.org/techniques/T1486/> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1490
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1490> rdf:type owl:NamedIndividual ,
+                                                                                 <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTechnique> ,
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/partOfTactic> ;
+                                                                                   owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                       owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0040>
+                                                                                                                 )
+                                                                                                     ]
+                                                                                 ] ;
+                                                                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/partOfTactic> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0040> ;
+                                                                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasAttackID> "T1490" ;
+                                                                        rdfs:label "Inhibit System Recovery"@en ;
+                                                                        rdfs:seeAlso <https://attack.mitre.org/techniques/T1490/> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1498
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1498> rdf:type owl:NamedIndividual ,
+                                                                                 <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTechnique> ,
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/partOfTactic> ;
+                                                                                   owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                       owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0040>
+                                                                                                                 )
+                                                                                                     ]
+                                                                                 ] ;
+                                                                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/partOfTactic> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0040> ;
+                                                                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasAttackID> "T1498" ;
+                                                                        rdfs:label "Network Denial of Service"@en ;
+                                                                        rdfs:seeAlso <https://attack.mitre.org/techniques/T1498/> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1566
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1566> rdf:type owl:NamedIndividual ,
+                                                                                 <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTechnique> ,
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/partOfTactic> ;
+                                                                                   owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                       owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0001>
+                                                                                                                 )
+                                                                                                     ]
+                                                                                 ] ;
+                                                                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/partOfTactic> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0001> ;
+                                                                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasAttackID> "T1566" ;
+                                                                        rdfs:label "Phishing"@en ;
+                                                                        rdfs:seeAlso <https://attack.mitre.org/techniques/T1566/> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0001
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0001> rdf:type owl:NamedIndividual ,
+                                                                                  <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTactic> ;
+                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasAttackID> "TA0001" ;
+                                                                         rdfs:label "Initial Access"@en ;
+                                                                         rdfs:seeAlso <https://attack.mitre.org/tactics/TA0001/> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0002
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0002> rdf:type owl:NamedIndividual ,
+                                                                                  <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTactic> ;
+                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasAttackID> "TA0002" ;
+                                                                         rdfs:label "Execution"@en ;
+                                                                         rdfs:seeAlso <https://attack.mitre.org/tactics/TA0002/> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0003
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0003> rdf:type owl:NamedIndividual ,
+                                                                                  <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTactic> ;
+                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasAttackID> "TA0003" ;
+                                                                         rdfs:label "Persistence"@en ;
+                                                                         rdfs:seeAlso <https://attack.mitre.org/tactics/TA0003/> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0004
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0004> rdf:type owl:NamedIndividual ,
+                                                                                  <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTactic> ;
+                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasAttackID> "TA0004" ;
+                                                                         rdfs:label "Privilege Escalation"@en ;
+                                                                         rdfs:seeAlso <https://attack.mitre.org/tactics/TA0004/> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0005
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0005> rdf:type owl:NamedIndividual ,
+                                                                                  <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTactic> ;
+                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasAttackID> "TA0005" ;
+                                                                         rdfs:label "Defense Evasion"@en ;
+                                                                         rdfs:seeAlso <https://attack.mitre.org/tactics/TA0005/> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0006
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0006> rdf:type owl:NamedIndividual ,
+                                                                                  <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTactic> ;
+                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasAttackID> "TA0006" ;
+                                                                         rdfs:label "Credential Access"@en ;
+                                                                         rdfs:seeAlso <https://attack.mitre.org/tactics/TA0006/> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0040
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0040> rdf:type owl:NamedIndividual ,
+                                                                                  <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTactic> ;
+                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasAttackID> "TA0040" ;
+                                                                         rdfs:label "Impact"@en ;
+                                                                         rdfs:seeAlso <https://attack.mitre.org/tactics/TA0040/> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TestServer6
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TestServer6> rdf:type owl:NamedIndividual ,
+                                                                                       <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Server> ;
+                                                                              <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasVulnerability> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/OpenSSH6> ,
+                                                                                                                                                                 <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WeakPassword6> ;
+                                                                              <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCriticality> "Moderate" ;
+                                                                              <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasHostname> "test-app-03" ;
+                                                                              <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasIPAddress> "10.0.5.3" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TrojanAttack5
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TrojanAttack5> rdf:type owl:NamedIndividual ,
+                                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TrojanAttack> ,
+                                                                                         [ rdf:type owl:Restriction ;
+                                                                                           owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/exploitsVulnerability> ;
+                                                                                           owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                               owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/UnpatchedBrowser5>
+                                                                                                                         )
+                                                                                                             ]
+                                                                                         ] ,
+                                                                                         [ rdf:type owl:Restriction ;
+                                                                                           owl:onProperty <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/usesTechnique> ;
+                                                                                           owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                               owl:oneOf ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1204>
+                                                                                                                         )
+                                                                                                             ]
+                                                                                         ] ;
+                                                                                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/exploitsVulnerability> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/UnpatchedBrowser5> ;
+                                                                                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/targetsAsset> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/KioskWS5> ;
+                                                                                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/usesTechnique> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/T1204> .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/UnpatchedBrowser5
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/UnpatchedBrowser5> rdf:type owl:NamedIndividual ,
+                                                                                             <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/UnpatchedSoftware> ;
+                                                                                    <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCVSSScore> 8.8 ;
+                                                                                    <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCVSSVector> "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/UnpatchedDB1
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/UnpatchedDB1> rdf:type owl:NamedIndividual ,
+                                                                                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/UnpatchedSoftware> ;
+                                                                               <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCVSSScore> 9.8 ;
+                                                                               <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCVSSVector> "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/UnpatchedSMB7
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/UnpatchedSMB7> rdf:type owl:NamedIndividual ,
+                                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/UnpatchedSoftware> ;
+                                                                                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCVSSScore> 9.8 ;
+                                                                                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCVSSVector> "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WeakPassword3
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WeakPassword3> rdf:type owl:NamedIndividual ,
+                                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WeakPassword> ;
+                                                                                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCVSSScore> 6.5 ;
+                                                                                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCVSSVector> "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WeakPassword6
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WeakPassword6> rdf:type owl:NamedIndividual ,
+                                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WeakPassword> ;
+                                                                                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCVSSScore> 4.3 ;
+                                                                                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCVSSVector> "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WeakPassword7
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WeakPassword7> rdf:type owl:NamedIndividual ,
+                                                                                         <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WeakPassword> ;
+                                                                                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCVSSScore> 6.5 ;
+                                                                                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCVSSVector> "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WebPortal4
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WebPortal4> rdf:type owl:NamedIndividual ,
+                                                                                      <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Application> ;
+                                                                             <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasCriticality> "High" ;
+                                                                             <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasHostname> "portal.example.com" ;
+                                                                             <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/hasIPAddress> "203.0.113.4" .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Actor>
+                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Alert>
+                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTactic>
+                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTechnique>
+                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CyberAsset>
+                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident>
+                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Threat>
+                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Vulnerability>
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Actor>
+                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Alert>
+                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTactic>
+                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/AttackTechnique>
+                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Incident>
+                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/SecurityControl>
+                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Threat>
+                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Vulnerability>
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/BruteForceAttack>
+                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/DDoSAttack>
+                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/MalwareAttack>
+                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/PhishingAttack>
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/CriticalAsset>
+                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/LowCriticalityAsset>
+                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/ModerateCriticalityAsset>
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/HighSeverityIncident>
+                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/LowSeverityIncident>
+                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/MediumSeverityIncident>
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/Misconfiguration>
+                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/OpenPort>
+                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/UnpatchedSoftware>
+                <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/WeakPassword>
+              )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0001>
+                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0002>
+                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0003>
+                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0004>
+                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0005>
+                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0006>
+                        <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/TA0040>
+                      )
+] .
+
+
+###  Generated by the OWL API (version 4.5.29) https://github.com/owlcs/owlapi

@@ -1,0 +1,1287 @@
+{
+ "rescored_from": [
+  "results_llama32_3b_C1.json",
+  "results_llama32_3b_C2C3.json"
+ ],
+ "summary": {
+  "C1": {
+   "severity_accuracy": 0.75,
+   "cq_mean_f1": 0.496,
+   "hallucination_rate": 0.0,
+   "consistency": 0.638,
+   "explanation_score_0to2": 0.0,
+   "n_items": 24,
+   "empty_or_error_replies": 1
+  },
+  "C2": {
+   "severity_accuracy": 0.75,
+   "cq_mean_f1": 0.48,
+   "hallucination_rate": 0.0,
+   "consistency": 0.598,
+   "explanation_score_0to2": 0.0,
+   "n_items": 24,
+   "empty_or_error_replies": 1
+  },
+  "C3": {
+   "severity_accuracy": 1.0,
+   "cq_mean_f1": 0.896,
+   "hallucination_rate": 0.0,
+   "consistency": 0.893,
+   "explanation_score_0to2": 0.0,
+   "n_items": 24,
+   "empty_or_error_replies": 0
+  }
+ },
+ "rows": {
+  "C1": [
+   {
+    "id": "SEV-Incident1",
+    "kind": "severity",
+    "gold": "High",
+    "answer": "High",
+    "correct": true,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident2",
+    "kind": "severity",
+    "gold": "Medium",
+    "answer": "Medium",
+    "correct": true,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident3",
+    "kind": "severity",
+    "gold": "Medium",
+    "answer": "High",
+    "correct": false,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident4",
+    "kind": "severity",
+    "gold": "High",
+    "answer": "High",
+    "correct": true,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident5",
+    "kind": "severity",
+    "gold": "Low",
+    "answer": "Low",
+    "correct": true,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident6",
+    "kind": "severity",
+    "gold": "Low",
+    "answer": "Medium",
+    "correct": false,
+    "consistency": 0.7142857142857143,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident7",
+    "kind": "severity",
+    "gold": "High",
+    "answer": "High",
+    "correct": true,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident8",
+    "kind": "severity",
+    "gold": "Undetermined",
+    "answer": "Undetermined",
+    "correct": true,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "CQ1",
+    "kind": "list",
+    "gold": [
+     "Incident1",
+     "Incident3",
+     "Incident4",
+     "Incident7"
+    ],
+    "answer": [
+     "AdminAccount3",
+     "CriticalServer1",
+     "FileServer7"
+    ],
+    "correct": 0.0,
+    "consistency": 0.14285714285714285,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ2",
+    "kind": "list",
+    "gold": [
+     "Incident1",
+     "Incident4",
+     "Incident7"
+    ],
+    "answer": [
+     "CriticalServer1",
+     "FileServer7"
+    ],
+    "correct": 0.0,
+    "consistency": 0.2857142857142857,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ3",
+    "kind": "list",
+    "gold": [
+     "Incident2",
+     "Incident3"
+    ],
+    "answer": [
+     "Incident2",
+     "Incident3",
+     "Incident5",
+     "Incident6"
+    ],
+    "correct": 0.6666666666666666,
+    "consistency": 0.42857142857142855,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ4",
+    "kind": "list",
+    "gold": [
+     "Incident5",
+     "Incident6"
+    ],
+    "answer": [
+     "Incident5",
+     "Incident6"
+    ],
+    "correct": 1.0,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ5",
+    "kind": "list",
+    "gold": [
+     "Incident1",
+     "Incident7"
+    ],
+    "answer": [
+     "Incident1",
+     "Incident7"
+    ],
+    "correct": 1.0,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ6",
+    "kind": "list",
+    "gold": [
+     "RansomwareAttack1",
+     "RansomwareAttack7",
+     "TrojanAttack5"
+    ],
+    "answer": [
+     "T1190",
+     "T1486",
+     "T1490",
+     "UnpatchedDB1",
+     "UnpatchedSMB7",
+     "WeakPassword3",
+     "WeakPassword6"
+    ],
+    "correct": 0.0,
+    "consistency": 0.2857142857142857,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ7",
+    "kind": "list",
+    "gold": [
+     "MacroPolicy2",
+     "UnpatchedBrowser5",
+     "UnpatchedDB1",
+     "UnpatchedSMB7"
+    ],
+    "answer": [
+     "CriticalServer1",
+     "UnpatchedDB1",
+     "UnpatchedSMB7"
+    ],
+    "correct": 0.5714285714285714,
+    "consistency": 0.14285714285714285,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ8",
+    "kind": "list",
+    "gold": [
+     "DDoSAttack4",
+     "RansomwareAttack1",
+     "RansomwareAttack7"
+    ],
+    "answer": [
+     "BruteForceAttack3",
+     "BruteForceAttack6",
+     "DDoSAttack4",
+     "PhishingAttack2",
+     "RansomwareAttack1",
+     "RansomwareAttack7",
+     "TrojanAttack5"
+    ],
+    "correct": 0.6,
+    "consistency": 0.16666666666666666,
+    "n_replies": 6,
+    "empty": 1,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ9",
+    "kind": "list",
+    "gold": [
+     "Incident3",
+     "Incident6",
+     "Incident7"
+    ],
+    "answer": [
+     "BruteForceAttack3",
+     "BruteForceAttack6",
+     "BruteForceAttack7"
+    ],
+    "correct": 0.0,
+    "consistency": 0.14285714285714285,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ10",
+    "kind": "list",
+    "gold": [
+     "CriticalServer1",
+     "FileServer7"
+    ],
+    "answer": [
+     "CriticalServer1",
+     "DevWS8",
+     "FileServer7"
+    ],
+    "correct": 0.8,
+    "consistency": 0.42857142857142855,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ11",
+    "kind": "list",
+    "gold": [
+     "BackupSystem1",
+     "BackupSystem7",
+     "DDoSShield4",
+     "EDR1"
+    ],
+    "answer": [
+     "BackupSystem1",
+     "BackupSystem7",
+     "DDoSShield4",
+     "Firewall6",
+     "MFA3"
+    ],
+    "correct": 0.6666666666666666,
+    "consistency": 0.8571428571428571,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ12",
+    "kind": "list",
+    "gold": [
+     "Alert1",
+     "Alert4"
+    ],
+    "answer": [
+     "Alert1",
+     "Alert3",
+     "Alert4"
+    ],
+    "correct": 0.8,
+    "consistency": 0.8571428571428571,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ13",
+    "kind": "list",
+    "gold": [
+     "AwarenessTraining2",
+     "BackupSystem1",
+     "BackupSystem7",
+     "DDoSShield4",
+     "MFA3"
+    ],
+    "answer": [
+     "Alert1",
+     "BackupSystem1",
+     "BackupSystem7",
+     "DDoSShield4",
+     "EDR1",
+     "Firewall6",
+     "MFA3"
+    ],
+    "correct": 0.6666666666666666,
+    "consistency": 0.2857142857142857,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ14",
+    "kind": "list",
+    "gold": [
+     "Incident6"
+    ],
+    "answer": [
+     "Incident6",
+     "Incident8"
+    ],
+    "correct": 0.6666666666666666,
+    "consistency": 0.5714285714285714,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ15",
+    "kind": "list",
+    "gold": [
+     "Incident3"
+    ],
+    "answer": [
+     "Incident5",
+     "Incident6"
+    ],
+    "correct": 0.0,
+    "consistency": 0.7142857142857143,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ16",
+    "kind": "list",
+    "gold": [
+     "Incident2",
+     "Incident5"
+    ],
+    "answer": [
+     "Incident2",
+     "Incident6"
+    ],
+    "correct": 0.5,
+    "consistency": 0.2857142857142857,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   }
+  ],
+  "C2": [
+   {
+    "id": "SEV-Incident1",
+    "kind": "severity",
+    "gold": "High",
+    "answer": "High",
+    "correct": true,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident2",
+    "kind": "severity",
+    "gold": "Medium",
+    "answer": "Medium",
+    "correct": true,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident3",
+    "kind": "severity",
+    "gold": "Medium",
+    "answer": "Medium",
+    "correct": true,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident4",
+    "kind": "severity",
+    "gold": "High",
+    "answer": "Medium",
+    "correct": false,
+    "consistency": 0.7142857142857143,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident5",
+    "kind": "severity",
+    "gold": "Low",
+    "answer": "Low",
+    "correct": true,
+    "consistency": 0.7142857142857143,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident6",
+    "kind": "severity",
+    "gold": "Low",
+    "answer": "Medium",
+    "correct": false,
+    "consistency": 0.8571428571428571,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident7",
+    "kind": "severity",
+    "gold": "High",
+    "answer": "High",
+    "correct": true,
+    "consistency": 0.5714285714285714,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident8",
+    "kind": "severity",
+    "gold": "Undetermined",
+    "answer": "Undetermined",
+    "correct": true,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "CQ1",
+    "kind": "list",
+    "gold": [
+     "Incident1",
+     "Incident3",
+     "Incident4",
+     "Incident7"
+    ],
+    "answer": [
+     "Incident2",
+     "Incident3",
+     "Incident4",
+     "Incident6"
+    ],
+    "correct": 0.5,
+    "consistency": 0.2857142857142857,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ2",
+    "kind": "list",
+    "gold": [
+     "Incident1",
+     "Incident4",
+     "Incident7"
+    ],
+    "answer": [],
+    "correct": 0.0,
+    "consistency": 0.2857142857142857,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ3",
+    "kind": "list",
+    "gold": [
+     "Incident2",
+     "Incident3"
+    ],
+    "answer": [
+     "Incident2",
+     "Incident3",
+     "Incident4",
+     "Incident6",
+     "Incident7"
+    ],
+    "correct": 0.5714285714285714,
+    "consistency": 0.14285714285714285,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ4",
+    "kind": "list",
+    "gold": [
+     "Incident5",
+     "Incident6"
+    ],
+    "answer": [
+     "Incident5",
+     "Incident6",
+     "Incident8"
+    ],
+    "correct": 0.8,
+    "consistency": 0.8571428571428571,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ5",
+    "kind": "list",
+    "gold": [
+     "Incident1",
+     "Incident7"
+    ],
+    "answer": [
+     "Incident1",
+     "Incident7"
+    ],
+    "correct": 1.0,
+    "consistency": 0.7142857142857143,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ6",
+    "kind": "list",
+    "gold": [
+     "RansomwareAttack1",
+     "RansomwareAttack7",
+     "TrojanAttack5"
+    ],
+    "answer": [
+     "MacroPolicy2",
+     "OpenSSH6",
+     "T1190",
+     "T1486",
+     "T1490",
+     "UnpatchedBrowser5",
+     "UnpatchedDB1",
+     "UnpatchedSMB7",
+     "WeakPassword3",
+     "WeakPassword6"
+    ],
+    "correct": 0.0,
+    "consistency": 0.2857142857142857,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ7",
+    "kind": "list",
+    "gold": [
+     "MacroPolicy2",
+     "UnpatchedBrowser5",
+     "UnpatchedDB1",
+     "UnpatchedSMB7"
+    ],
+    "answer": [
+     "UnpatchedDB1",
+     "UnpatchedSMB7"
+    ],
+    "correct": 0.6666666666666666,
+    "consistency": 0.7142857142857143,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ8",
+    "kind": "list",
+    "gold": [
+     "DDoSAttack4",
+     "RansomwareAttack1",
+     "RansomwareAttack7"
+    ],
+    "answer": [
+     "Incident1",
+     "Incident3",
+     "Incident7",
+     "Incident8"
+    ],
+    "correct": 0.0,
+    "consistency": 0.5,
+    "n_replies": 6,
+    "empty": 1,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ9",
+    "kind": "list",
+    "gold": [
+     "Incident3",
+     "Incident6",
+     "Incident7"
+    ],
+    "answer": [
+     "BruteForceAttack3",
+     "BruteForceAttack6",
+     "PhishingAttack2"
+    ],
+    "correct": 0.0,
+    "consistency": 0.42857142857142855,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ10",
+    "kind": "list",
+    "gold": [
+     "CriticalServer1",
+     "FileServer7"
+    ],
+    "answer": [
+     "CriticalServer1",
+     "FileServer7"
+    ],
+    "correct": 1.0,
+    "consistency": 0.7142857142857143,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ11",
+    "kind": "list",
+    "gold": [
+     "BackupSystem1",
+     "BackupSystem7",
+     "DDoSShield4",
+     "EDR1"
+    ],
+    "answer": [
+     "AV5",
+     "BackupSystem1",
+     "BackupSystem7",
+     "DDoSShield4",
+     "EDR1",
+     "Firewall6",
+     "MFA3"
+    ],
+    "correct": 0.7272727272727273,
+    "consistency": 0.2857142857142857,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ12",
+    "kind": "list",
+    "gold": [
+     "Alert1",
+     "Alert4"
+    ],
+    "answer": [
+     "Alert1",
+     "Alert3",
+     "Alert4"
+    ],
+    "correct": 0.8,
+    "consistency": 0.2857142857142857,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ13",
+    "kind": "list",
+    "gold": [
+     "AwarenessTraining2",
+     "BackupSystem1",
+     "BackupSystem7",
+     "DDoSShield4",
+     "MFA3"
+    ],
+    "answer": [
+     "AV5",
+     "BackupSystem1",
+     "BackupSystem7",
+     "DDoSShield4",
+     "EDR1",
+     "Firewall6",
+     "MFA3",
+     "MailGateway2"
+    ],
+    "correct": 0.6153846153846154,
+    "consistency": 0.42857142857142855,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ14",
+    "kind": "list",
+    "gold": [
+     "Incident6"
+    ],
+    "answer": [
+     "Incident6",
+     "Insider6"
+    ],
+    "correct": 0.6666666666666666,
+    "consistency": 0.7142857142857143,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ15",
+    "kind": "list",
+    "gold": [
+     "Incident3"
+    ],
+    "answer": [
+     "Incident1",
+     "Incident5"
+    ],
+    "correct": 0.0,
+    "consistency": 0.42857142857142855,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ16",
+    "kind": "list",
+    "gold": [
+     "Incident2",
+     "Incident5"
+    ],
+    "answer": [
+     "Incident2",
+     "Incident3",
+     "Incident6",
+     "Incident7"
+    ],
+    "correct": 0.3333333333333333,
+    "consistency": 0.42857142857142855,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   }
+  ],
+  "C3": [
+   {
+    "id": "SEV-Incident1",
+    "kind": "severity",
+    "gold": "High",
+    "answer": "High",
+    "correct": true,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident2",
+    "kind": "severity",
+    "gold": "Medium",
+    "answer": "Medium",
+    "correct": true,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident3",
+    "kind": "severity",
+    "gold": "Medium",
+    "answer": "Medium",
+    "correct": true,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident4",
+    "kind": "severity",
+    "gold": "High",
+    "answer": "High",
+    "correct": true,
+    "consistency": 0.7142857142857143,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident5",
+    "kind": "severity",
+    "gold": "Low",
+    "answer": "Low",
+    "correct": true,
+    "consistency": 0.8571428571428571,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident6",
+    "kind": "severity",
+    "gold": "Low",
+    "answer": "Low",
+    "correct": true,
+    "consistency": 0.8571428571428571,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident7",
+    "kind": "severity",
+    "gold": "High",
+    "answer": "High",
+    "correct": true,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident8",
+    "kind": "severity",
+    "gold": "Undetermined",
+    "answer": "Undetermined",
+    "correct": true,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "CQ1",
+    "kind": "list",
+    "gold": [
+     "Incident1",
+     "Incident3",
+     "Incident4",
+     "Incident7"
+    ],
+    "answer": [
+     "Incident1",
+     "Incident3",
+     "Incident4",
+     "Incident7"
+    ],
+    "correct": 1.0,
+    "consistency": 0.8571428571428571,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ2",
+    "kind": "list",
+    "gold": [
+     "Incident1",
+     "Incident4",
+     "Incident7"
+    ],
+    "answer": [],
+    "correct": 0.0,
+    "consistency": 0.5714285714285714,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ3",
+    "kind": "list",
+    "gold": [
+     "Incident2",
+     "Incident3"
+    ],
+    "answer": [
+     "Incident2",
+     "Incident3"
+    ],
+    "correct": 1.0,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ4",
+    "kind": "list",
+    "gold": [
+     "Incident5",
+     "Incident6"
+    ],
+    "answer": [
+     "Incident5",
+     "Incident6"
+    ],
+    "correct": 1.0,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ5",
+    "kind": "list",
+    "gold": [
+     "Incident1",
+     "Incident7"
+    ],
+    "answer": [
+     "Incident1",
+     "Incident7"
+    ],
+    "correct": 1.0,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ6",
+    "kind": "list",
+    "gold": [
+     "RansomwareAttack1",
+     "RansomwareAttack7",
+     "TrojanAttack5"
+    ],
+    "answer": [
+     "RansomwareAttack1",
+     "RansomwareAttack7",
+     "TrojanAttack5"
+    ],
+    "correct": 1.0,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ7",
+    "kind": "list",
+    "gold": [
+     "MacroPolicy2",
+     "UnpatchedBrowser5",
+     "UnpatchedDB1",
+     "UnpatchedSMB7"
+    ],
+    "answer": [
+     "UnpatchedDB1",
+     "UnpatchedSMB7"
+    ],
+    "correct": 0.6666666666666666,
+    "consistency": 0.5714285714285714,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ8",
+    "kind": "list",
+    "gold": [
+     "DDoSAttack4",
+     "RansomwareAttack1",
+     "RansomwareAttack7"
+    ],
+    "answer": [
+     "DDoSAttack4",
+     "RansomwareAttack1",
+     "RansomwareAttack7"
+    ],
+    "correct": 1.0,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ9",
+    "kind": "list",
+    "gold": [
+     "Incident3",
+     "Incident6",
+     "Incident7"
+    ],
+    "answer": [
+     "Incident3",
+     "Incident6",
+     "Incident7"
+    ],
+    "correct": 1.0,
+    "consistency": 0.8571428571428571,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ10",
+    "kind": "list",
+    "gold": [
+     "CriticalServer1",
+     "FileServer7"
+    ],
+    "answer": [
+     "CriticalServer1",
+     "FileServer7"
+    ],
+    "correct": 1.0,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ11",
+    "kind": "list",
+    "gold": [
+     "BackupSystem1",
+     "BackupSystem7",
+     "DDoSShield4",
+     "EDR1"
+    ],
+    "answer": [
+     "BackupSystem1",
+     "BackupSystem7",
+     "DDoSShield4",
+     "EDR1"
+    ],
+    "correct": 1.0,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ12",
+    "kind": "list",
+    "gold": [
+     "Alert1",
+     "Alert4"
+    ],
+    "answer": [
+     "Alert1",
+     "Alert4"
+    ],
+    "correct": 1.0,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ13",
+    "kind": "list",
+    "gold": [
+     "AwarenessTraining2",
+     "BackupSystem1",
+     "BackupSystem7",
+     "DDoSShield4",
+     "MFA3"
+    ],
+    "answer": [
+     "AwarenessTraining2",
+     "BackupSystem1",
+     "BackupSystem7",
+     "DDoSShield4",
+     "MFA3"
+    ],
+    "correct": 1.0,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ14",
+    "kind": "list",
+    "gold": [
+     "Incident6"
+    ],
+    "answer": [
+     "Incident6",
+     "Incident8"
+    ],
+    "correct": 0.6666666666666666,
+    "consistency": 0.42857142857142855,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ15",
+    "kind": "list",
+    "gold": [
+     "Incident3"
+    ],
+    "answer": [
+     "Incident3"
+    ],
+    "correct": 1.0,
+    "consistency": 0.7142857142857143,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ16",
+    "kind": "list",
+    "gold": [
+     "Incident2",
+     "Incident5"
+    ],
+    "answer": [
+     "Incident2",
+     "Incident5"
+    ],
+    "correct": 1.0,
+    "consistency": 1.0,
+    "n_replies": 7,
+    "empty": 0,
+    "hallucination": false,
+    "explanation": null
+   }
+  ]
+ }
+}

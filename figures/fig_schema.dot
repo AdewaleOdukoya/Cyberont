@@ -1,0 +1,72 @@
+digraph CyberOnt {
+  graph [rankdir=TB, splines=true, nodesep=0.18, ranksep=0.32, fontname="Liberation Sans", pad=0.05, dpi=300];
+  node  [shape=plain, fontname="Liberation Sans", fontsize=9];
+  edge  [fontname="Liberation Sans", fontsize=7.5, color="#444444", arrowsize=0.55, penwidth=0.8];
+
+  Alert [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="2" color="#333333">
+    <tr><td bgcolor="#E8E8E8"><b>Alert</b></td></tr></table>>];
+
+  Incident [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="2" color="#333333">
+    <tr><td bgcolor="#E8E8E8"><b>Incident</b></td></tr>
+    <tr><td align="left"><font point-size="7.5"><i>≡ HighSeverityIncident</i></font></td></tr>
+    <tr><td align="left"><font point-size="7.5"><i>≡ MediumSeverityIncident</i></font></td></tr>
+    <tr><td align="left"><font point-size="7.5"><i>≡ LowSeverityIncident</i></font></td></tr></table>>];
+
+  SecurityControl [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="2" color="#333333">
+    <tr><td bgcolor="#E8E8E8"><b>SecurityControl</b></td></tr>
+    <tr><td align="left"><font point-size="7.5">BackupSystem, Antivirus,</font></td></tr>
+    <tr><td align="left"><font point-size="7.5">FirewallRule, MFA,</font></td></tr>
+    <tr><td align="left"><font point-size="7.5">SecurityAwarenessTraining,</font></td></tr>
+    <tr><td align="left"><font point-size="7.5">DDoSMitigationService</font></td></tr></table>>];
+
+  Actor [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="2" color="#333333">
+    <tr><td bgcolor="#E8E8E8"><b>Actor</b></td></tr>
+    <tr><td align="left"><font point-size="7.5">ThreatActor: ExternalAttacker,</font></td></tr>
+    <tr><td align="left"><font point-size="7.5">Insider</font></td></tr></table>>];
+
+  CyberAsset [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="2" color="#333333">
+    <tr><td bgcolor="#E8E8E8"><b>CyberAsset</b></td></tr>
+    <tr><td align="left"><font point-size="7.5">Server, Database, Application,</font></td></tr>
+    <tr><td align="left"><font point-size="7.5">Workstation, UserAccount, NetworkDevice</font></td></tr>
+    <tr><td align="left"><font point-size="7.5"><i>≡ CriticalAsset / Moderate- / Low-</i></font></td></tr>
+    <tr><td align="left"><font point-size="7.5"><i>   CriticalityAsset</i> (hasCriticality)</font></td></tr></table>>];
+
+  Threat [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="2" color="#333333">
+    <tr><td bgcolor="#E8E8E8"><b>Threat</b></td></tr>
+    <tr><td align="left"><font point-size="7.5">Ransomware, Trojan (Malware),</font></td></tr>
+    <tr><td align="left"><font point-size="7.5">Phishing, BruteForce, DDoS</font></td></tr>
+    <tr><td align="left"><font point-size="7.5"><i>≡ HighImpactThreat, SevereThreat,</i></font></td></tr>
+    <tr><td align="left"><font point-size="7.5"><i>   NonSevereThreat</i></font></td></tr></table>>];
+
+  Vulnerability [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="2" color="#333333">
+    <tr><td bgcolor="#E8E8E8"><b>Vulnerability</b></td></tr>
+    <tr><td align="left"><font point-size="7.5">UnpatchedSoftware, WeakPassword,</font></td></tr>
+    <tr><td align="left"><font point-size="7.5">OpenPort, Misconfiguration</font></td></tr>
+    <tr><td align="left"><font point-size="7.5"><i>≡ Severe- / NonSevereVulnerability</i></font></td></tr>
+    <tr><td align="left"><font point-size="7.5"><i>   </i>(hasCVSSScore)</font></td></tr></table>>];
+
+  Technique [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="2" color="#333333">
+    <tr><td bgcolor="#E8E8E8"><b>AttackTechnique</b></td></tr>
+    <tr><td align="left"><font point-size="7.5">ATT&amp;CK T1486, T1498, T1110 …</font></td></tr>
+    <tr><td align="left"><font point-size="7.5"><i>≡ ImpactTechnique, NonImpactTechnique</i></font></td></tr></table>>];
+
+  Tactic [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="2" color="#333333">
+    <tr><td bgcolor="#E8E8E8"><b>AttackTactic</b></td></tr>
+    <tr><td align="left"><font point-size="7.5">TA0040 Impact, TA0006 …</font></td></tr></table>>];
+
+  Alert -> Incident [label="reportsIncident"];
+  Alert -> SecurityControl [label="generatedBy"];
+  Incident -> CyberAsset [label="affectsAsset"];
+  Incident -> Threat [label="involvesThreat"];
+  Incident -> Actor [label="causedBy"];
+  SecurityControl -> CyberAsset [label="protectsAsset"];
+  SecurityControl -> Threat [label="mitigatesThreat"];
+  SecurityControl -> Vulnerability [label="mitigatesVuln."];
+  Threat -> CyberAsset [label="targetsAsset", constraint=false];
+  Threat -> Vulnerability [label="exploitsVulnerability"];
+  CyberAsset -> Vulnerability [label="hasVulnerability"];
+  Threat -> Technique [label="usesTechnique"];
+  Technique -> Tactic [label="partOfTactic"];
+  {rank=same; CyberAsset; Threat;}
+  {rank=same; Vulnerability; Technique;}
+}

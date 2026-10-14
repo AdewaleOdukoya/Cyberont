@@ -1,0 +1,363 @@
+@prefix : <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix cybersecurity-ontology: <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity-ontology#> .
+@base <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/> .
+
+<http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#affectsAsset
+:affectsAsset rdf:type owl:ObjectProperty ;
+              rdfs:domain :Incident ;
+              rdfs:range :CyberAsset .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#causedBy
+:causedBy rdf:type owl:ObjectProperty ;
+          rdfs:domain :Incident ;
+          rdfs:range :Actor .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#exploitsVulnerability
+:exploitsVulnerability rdf:type owl:ObjectProperty ;
+                       rdfs:domain :Threat ;
+                       rdfs:range :Vulnerability .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#generatedBy
+:generatedBy rdf:type owl:ObjectProperty ;
+             rdfs:domain :Alert ;
+             rdfs:range :SecurityControl .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#involvesThreat
+:involvesThreat rdf:type owl:ObjectProperty ;
+                rdfs:domain :Incident ;
+                rdfs:range :Threat .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#mitigatesThreat
+:mitigatesThreat rdf:type owl:ObjectProperty ;
+                 rdfs:domain :SecurityControl ;
+                 rdfs:range :Threat .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#mitigatesVulnerability
+:mitigatesVulnerability rdf:type owl:ObjectProperty ;
+                        rdfs:domain :SecurityControl ;
+                        rdfs:range :Vulnerability .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#protectsAssets
+:protectsAssets rdf:type owl:ObjectProperty ;
+                rdfs:domain :SecurityControl ;
+                rdfs:range :CyberAsset .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#reportsIncident
+:reportsIncident rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Alert ;
+                 rdfs:range :Incident .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#targetsAssets
+:targetsAssets rdf:type owl:ObjectProperty ;
+               rdfs:domain :Threat ;
+               rdfs:range :CyberAsset .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#hasCVSSScore
+:hasCVSSScore rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Vulnerability ;
+              rdfs:range xsd:decimal .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#hasHostname
+:hasHostname rdf:type owl:DatatypeProperty ;
+             rdfs:domain :CyberAsset ;
+             rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#hasIPAddress
+:hasIPAddress rdf:type owl:DatatypeProperty ;
+              rdfs:domain :CyberAsset ;
+              rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#hasSeverityScore
+:hasSeverityScore rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Incident ;
+                  rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#hasStatus
+:hasStatus rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Incident ;
+           rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#hasTimestamp
+:hasTimestamp rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Incident ;
+              rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#Actor
+:Actor rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#Alert
+:Alert rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#Antivirus
+:Antivirus rdf:type owl:Class ;
+           rdfs:subClassOf :SecurityControl .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#Application
+:Application rdf:type owl:Class ;
+             rdfs:subClassOf :CyberAsset .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#BackupSystem
+:BackupSystem rdf:type owl:Class ;
+              rdfs:subClassOf :SecurityControl .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#BruteForceAttack
+:BruteForceAttack rdf:type owl:Class ;
+                  rdfs:subClassOf :Threat .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#CriticalAsset
+:CriticalAsset rdf:type owl:Class ;
+               rdfs:subClassOf :CyberAsset .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#CyberAsset
+:CyberAsset rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#DDoSAttack
+:DDoSAttack rdf:type owl:Class ;
+            rdfs:subClassOf :Threat .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#Database
+:Database rdf:type owl:Class ;
+          rdfs:subClassOf :CyberAsset .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#ExternalAttacker
+:ExternalAttacker rdf:type owl:Class ;
+                  rdfs:subClassOf :ThreatActor .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#FirewallRule
+:FirewallRule rdf:type owl:Class ;
+              rdfs:subClassOf :SecurityControl .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#HighSeverityIncident
+:HighSeverityIncident rdf:type owl:Class ;
+                      owl:equivalentClass [ owl:intersectionOf ( :Incident
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty :affectsAsset ;
+                                                                   owl:someValuesFrom :CriticalAsset
+                                                                 ]
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty :involvesThreat ;
+                                                                   owl:someValuesFrom :RansomwareAttack
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ] ;
+                      rdfs:subClassOf :Incident .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#Incident
+:Incident rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#Insider
+:Insider rdf:type owl:Class ;
+         rdfs:subClassOf :ThreatActor .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#LowSeverityIncident
+:LowSeverityIncident rdf:type owl:Class ;
+                     rdfs:subClassOf :Incident .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#MalwareAttack
+:MalwareAttack rdf:type owl:Class ;
+               rdfs:subClassOf :Threat .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#MediumSeverityIncident
+:MediumSeverityIncident rdf:type owl:Class ;
+                        rdfs:subClassOf :Incident .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#Misconfiguration
+:Misconfiguration rdf:type owl:Class ;
+                  rdfs:subClassOf :Vulnerability .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#MultiFactorAuthentication
+:MultiFactorAuthentication rdf:type owl:Class ;
+                           rdfs:subClassOf :SecurityControl .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#NetworkDevice
+:NetworkDevice rdf:type owl:Class ;
+               rdfs:subClassOf :CyberAsset .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#OpenPort
+:OpenPort rdf:type owl:Class ;
+          rdfs:subClassOf :Vulnerability .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#PhishingAttack
+:PhishingAttack rdf:type owl:Class ;
+                rdfs:subClassOf :Threat .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#RansomwareAttack
+:RansomwareAttack rdf:type owl:Class ;
+                  rdfs:subClassOf :MalwareAttack .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#SecurityAwarenessTraining
+:SecurityAwarenessTraining rdf:type owl:Class ;
+                           rdfs:subClassOf :SecurityControl .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#SecurityControl
+:SecurityControl rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#SecurityLevel
+:SecurityLevel rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#Server
+:Server rdf:type owl:Class ;
+        rdfs:subClassOf :CyberAsset .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#Threat
+:Threat rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#ThreatActor
+:ThreatActor rdf:type owl:Class ;
+             rdfs:subClassOf :Actor .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#TrojanAttack
+:TrojanAttack rdf:type owl:Class ;
+              rdfs:subClassOf :MalwareAttack .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#UnpatchedSoftware
+:UnpatchedSoftware rdf:type owl:Class ;
+                   rdfs:subClassOf :Vulnerability .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#UserAccount
+:UserAccount rdf:type owl:Class ;
+             rdfs:subClassOf :CyberAsset .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#Vulnerability
+:Vulnerability rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#WeakPassword
+:WeakPassword rdf:type owl:Class ;
+              rdfs:subClassOf :Vulnerability .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#Workstation
+:Workstation rdf:type owl:Class ;
+             rdfs:subClassOf :CyberAsset .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#Attacker1
+:Attacker1 rdf:type owl:NamedIndividual ,
+                    :ExternalAttacker .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#BackupSystem1
+:BackupSystem1 rdf:type owl:NamedIndividual ,
+                        :BackupSystem ;
+               :protectsAssets :CriticalServer1 .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#CriticalServer1
+:CriticalServer1 rdf:type owl:NamedIndividual ,
+                          :CriticalAsset ,
+                          :Server ;
+                 :hasHostname "prod-db-01" ;
+                 :hasIPAddress "10.0.0.10" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#Incident1
+:Incident1 rdf:type owl:NamedIndividual ,
+                    :Incident ;
+           :affectsAsset :CriticalServer1 ;
+           :causedBy :Attacker1 ;
+           :involvesThreat :RansomwareAttack1 ;
+           :hasSeverityScore 9 ;
+           :hasStatus "Open" ;
+           :hasTimestamp "2025-11-24T09:30:00" .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#RansomwareAttack1
+:RansomwareAttack1 rdf:type owl:NamedIndividual ,
+                            :RansomwareAttack ;
+                   :exploitsVulnerability :UnpatchedDB1 ;
+                   :targetsAssets :CriticalServer1 .
+
+
+###  http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity#UnpatchedDB1
+:UnpatchedDB1 rdf:type owl:NamedIndividual ,
+                       :UnpatchedSoftware ;
+              :hasCVSSScore 9.5 .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :HighSeverityIncident
+                :LowSeverityIncident
+                :MediumSeverityIncident
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

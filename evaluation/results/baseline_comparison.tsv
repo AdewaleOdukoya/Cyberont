@@ -1,0 +1,9 @@
+incident	reference	CyberOnt v2	v1 rule	CVSS-only	Criticality-only
+Incident1	High	High	High	High	High
+Incident2	Medium	Medium	Unclassified	High	Medium
+Incident3	Medium	Medium	Unclassified	Medium	High
+Incident4	High	High	Unclassified	Unclassified	High
+Incident5	Low	Low	Unclassified	High	Low
+Incident6	Low	Low	Unclassified	Medium	Medium
+Incident7	High	High	High	High	High
+Incident8	Unclassified	Unclassified	Unclassified	Unclassified	Unclassified

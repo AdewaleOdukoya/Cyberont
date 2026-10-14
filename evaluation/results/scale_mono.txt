@@ -1,0 +1,6 @@
+k=2
+{"runs": 3, "consistent": true, "unsatisfiable_classes": 0, "inferred_type_links": 384, "consistency_ms": [35.61, 0.32, 35.78], "classification_ms": [123.43, 8.03, 125.13], "realisation_ms": [196.67, 21.26, 198.68], "total_ms": [355.71, 13.46, 359.62]}
+k=5
+{"runs": 3, "consistent": true, "unsatisfiable_classes": 0, "inferred_type_links": 903, "consistency_ms": [56.80, 20.11, 45.31], "classification_ms": [855.18, 152.51, 869.24], "realisation_ms": [2020.52, 144.23, 2027.92], "total_ms": [2932.51, 313.71, 2942.48]}
+k=25
+k=25 (200 incidents): not completed within 1800 s wall-clock (timeout, exit 124), single run

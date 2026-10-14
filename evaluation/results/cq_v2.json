@@ -1,0 +1,18 @@
+[
+  {"id": "CQ1", "answered": true, "precision": 1.000, "recall": 1.000, "n_expected": 4, "n_returned": 4, "query_ms_mean": 99.814, "query_ms_sd": 21.034, "returned": "Incident1,Incident3,Incident4,Incident7"},
+  {"id": "CQ2", "answered": true, "precision": 1.000, "recall": 1.000, "n_expected": 3, "n_returned": 3, "query_ms_mean": 0.043, "query_ms_sd": 0.107, "returned": "Incident1,Incident4,Incident7"},
+  {"id": "CQ3", "answered": true, "precision": 1.000, "recall": 1.000, "n_expected": 2, "n_returned": 2, "query_ms_mean": 0.013, "query_ms_sd": 0.003, "returned": "Incident2,Incident3"},
+  {"id": "CQ4", "answered": true, "precision": 1.000, "recall": 1.000, "n_expected": 2, "n_returned": 2, "query_ms_mean": 0.021, "query_ms_sd": 0.025, "returned": "Incident5,Incident6"},
+  {"id": "CQ5", "answered": true, "precision": 1.000, "recall": 1.000, "n_expected": 2, "n_returned": 2, "query_ms_mean": 93.686, "query_ms_sd": 31.587, "returned": "Incident1,Incident7"},
+  {"id": "CQ6", "answered": true, "precision": 1.000, "recall": 1.000, "n_expected": 3, "n_returned": 3, "query_ms_mean": 92.757, "query_ms_sd": 12.258, "returned": "RansomwareAttack1,RansomwareAttack7,TrojanAttack5"},
+  {"id": "CQ7", "answered": true, "precision": 1.000, "recall": 1.000, "n_expected": 4, "n_returned": 4, "query_ms_mean": 0.009, "query_ms_sd": 0.003, "returned": "MacroPolicy2,UnpatchedBrowser5,UnpatchedDB1,UnpatchedSMB7"},
+  {"id": "CQ8", "answered": true, "precision": 1.000, "recall": 1.000, "n_expected": 3, "n_returned": 3, "query_ms_mean": 0.012, "query_ms_sd": 0.011, "returned": "DDoSAttack4,RansomwareAttack1,RansomwareAttack7"},
+  {"id": "CQ9", "answered": true, "precision": 1.000, "recall": 1.000, "n_expected": 3, "n_returned": 3, "query_ms_mean": 75.263, "query_ms_sd": 12.593, "returned": "Incident3,Incident6,Incident7"},
+  {"id": "CQ10", "answered": true, "precision": 1.000, "recall": 1.000, "n_expected": 2, "n_returned": 2, "query_ms_mean": 63.775, "query_ms_sd": 9.895, "returned": "CriticalServer1,FileServer7"},
+  {"id": "CQ11", "answered": true, "precision": 1.000, "recall": 1.000, "n_expected": 4, "n_returned": 4, "query_ms_mean": 109.480, "query_ms_sd": 10.977, "returned": "BackupSystem1,BackupSystem7,DDoSShield4,EDR1"},
+  {"id": "CQ12", "answered": true, "precision": 1.000, "recall": 1.000, "n_expected": 2, "n_returned": 2, "query_ms_mean": 37.548, "query_ms_sd": 5.058, "returned": "Alert1,Alert4"},
+  {"id": "CQ13", "answered": true, "precision": 1.000, "recall": 1.000, "n_expected": 5, "n_returned": 5, "query_ms_mean": 103.311, "query_ms_sd": 21.812, "returned": "AwarenessTraining2,BackupSystem1,BackupSystem7,DDoSShield4,MFA3"},
+  {"id": "CQ14", "answered": true, "precision": 1.000, "recall": 1.000, "n_expected": 1, "n_returned": 1, "query_ms_mean": 69.931, "query_ms_sd": 9.717, "returned": "Incident6"},
+  {"id": "CQ15", "answered": true, "precision": 1.000, "recall": 1.000, "n_expected": 1, "n_returned": 1, "query_ms_mean": 83.089, "query_ms_sd": 17.878, "returned": "Incident3"},
+  {"id": "CQ16", "answered": true, "precision": 1.000, "recall": 1.000, "n_expected": 2, "n_returned": 2, "query_ms_mean": 77.183, "query_ms_sd": 10.508, "returned": "Incident2,Incident5"}
+]

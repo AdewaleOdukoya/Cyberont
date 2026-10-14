@@ -1,0 +1,20 @@
+digraph E {
+  graph [rankdir=TB, nodesep=0.1, ranksep=0.2, dpi=300, pad=0.03, fontname="Liberation Sans"];
+  node [fontname="Liberation Sans", fontsize=8, shape=box, style="rounded", margin="0.06,0.03", height=0.22, penwidth=0.8];
+  edge [fontname="Liberation Sans", fontsize=7, arrowsize=0.45, penwidth=0.7, color="#333333"];
+  I [label="Incident3\n⇒ MediumSeverityIncident", style="rounded,bold"];
+  A [label="AdminAccount3\nhasCriticality \"High\"\n⇒ CriticalAsset"];
+  B [label="BruteForceAttack3\n⇒ NonSevereThreat"];
+  W [label="WeakPassword3\nhasCVSSScore 6.5\n⇒ NonSevereVulnerability"];
+  T1 [label="T1110 Brute Force\n⇒ NonImpactTechnique"];
+  T2 [label="T1078 Valid Accounts\n⇒ NonImpactTechnique"];
+  K1 [label="TA0006\nCredential Access", shape=box, style="dashed"];
+  K2 [label="TA0001, TA0003,\nTA0004, TA0005", shape=box, style="dashed"];
+  I -> A [label=" affectsAsset"];
+  I -> B [label=" involvesThreat\n (closed: only {…})"];
+  B -> W [label=" exploitsVuln."];
+  B -> T1 [label=" usesTechnique"];
+  B -> T2 [label=" usesTechnique"];
+  T1 -> K1 [label=" partOfTactic"];
+  T2 -> K2 [label=" partOfTactic"];
+}

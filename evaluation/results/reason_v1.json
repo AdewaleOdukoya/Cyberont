@@ -1,0 +1,2 @@
+{"runs": 30, "consistent": true, "unsatisfiable_classes": 0, "inferred_type_links": 21,
+ "consistency_ms": [7.67, 2.72, 7.17], "classification_ms": [3.99, 3.17, 2.43], "realisation_ms": [0.79, 0.26, 0.74], "total_ms": [12.45, 4.68, 11.09]}

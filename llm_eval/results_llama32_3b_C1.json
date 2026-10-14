@@ -1,0 +1,2367 @@
+{
+ "provider": "ollama",
+ "model": "llama3.2:3b",
+ "samples": 5,
+ "temperature": 0.7,
+ "summary": {
+  "C1": {
+   "severity_accuracy": 0.75,
+   "cq_mean_f1": 0.496,
+   "hallucination_rate": 0.0,
+   "consistency": 0.643,
+   "explanation_score_0to2": 0.0,
+   "n_items": 24
+  }
+ },
+ "rows": {
+  "C1_rows": [
+   {
+    "id": "SEV-Incident1",
+    "kind": "severity",
+    "gold": "High",
+    "answer": "High",
+    "correct": true,
+    "consistency": 1.0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident2",
+    "kind": "severity",
+    "gold": "Medium",
+    "answer": "Medium",
+    "correct": true,
+    "consistency": 1.0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident3",
+    "kind": "severity",
+    "gold": "Medium",
+    "answer": "High",
+    "correct": false,
+    "consistency": 1.0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident4",
+    "kind": "severity",
+    "gold": "High",
+    "answer": "High",
+    "correct": true,
+    "consistency": 1.0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident5",
+    "kind": "severity",
+    "gold": "Low",
+    "answer": "Low",
+    "correct": true,
+    "consistency": 1.0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident6",
+    "kind": "severity",
+    "gold": "Low",
+    "answer": "Medium",
+    "correct": false,
+    "consistency": 0.7142857142857143,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident7",
+    "kind": "severity",
+    "gold": "High",
+    "answer": "High",
+    "correct": true,
+    "consistency": 1.0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "SEV-Incident8",
+    "kind": "severity",
+    "gold": "Undetermined",
+    "answer": "Undetermined",
+    "correct": true,
+    "consistency": 1.0,
+    "hallucination": false,
+    "explanation": 0
+   },
+   {
+    "id": "CQ1",
+    "kind": "list",
+    "gold": [
+     "Incident1",
+     "Incident3",
+     "Incident4",
+     "Incident7"
+    ],
+    "answer": [
+     "AdminAccount3",
+     "CriticalServer1",
+     "FileServer7"
+    ],
+    "correct": 0.0,
+    "consistency": 0.14285714285714285,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ2",
+    "kind": "list",
+    "gold": [
+     "Incident1",
+     "Incident4",
+     "Incident7"
+    ],
+    "answer": [
+     "CriticalServer1",
+     "FileServer7"
+    ],
+    "correct": 0.0,
+    "consistency": 0.2857142857142857,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ3",
+    "kind": "list",
+    "gold": [
+     "Incident2",
+     "Incident3"
+    ],
+    "answer": [
+     "Incident2",
+     "Incident3",
+     "Incident5",
+     "Incident6"
+    ],
+    "correct": 0.6666666666666666,
+    "consistency": 0.42857142857142855,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ4",
+    "kind": "list",
+    "gold": [
+     "Incident5",
+     "Incident6"
+    ],
+    "answer": [
+     "Incident5",
+     "Incident6"
+    ],
+    "correct": 1.0,
+    "consistency": 1.0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ5",
+    "kind": "list",
+    "gold": [
+     "Incident1",
+     "Incident7"
+    ],
+    "answer": [
+     "Incident1",
+     "Incident7"
+    ],
+    "correct": 1.0,
+    "consistency": 1.0,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ6",
+    "kind": "list",
+    "gold": [
+     "RansomwareAttack1",
+     "RansomwareAttack7",
+     "TrojanAttack5"
+    ],
+    "answer": [
+     "T1190",
+     "T1486",
+     "T1490",
+     "UnpatchedDB1",
+     "UnpatchedSMB7",
+     "WeakPassword3",
+     "WeakPassword6"
+    ],
+    "correct": 0.0,
+    "consistency": 0.2857142857142857,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ7",
+    "kind": "list",
+    "gold": [
+     "MacroPolicy2",
+     "UnpatchedBrowser5",
+     "UnpatchedDB1",
+     "UnpatchedSMB7"
+    ],
+    "answer": [
+     "CriticalServer1",
+     "UnpatchedDB1",
+     "UnpatchedSMB7"
+    ],
+    "correct": 0.5714285714285714,
+    "consistency": 0.14285714285714285,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ8",
+    "kind": "list",
+    "gold": [
+     "DDoSAttack4",
+     "RansomwareAttack1",
+     "RansomwareAttack7"
+    ],
+    "answer": [
+     "BruteForceAttack3",
+     "BruteForceAttack6",
+     "DDoSAttack4",
+     "PhishingAttack2",
+     "RansomwareAttack1",
+     "RansomwareAttack7",
+     "TrojanAttack5"
+    ],
+    "correct": 0.6,
+    "consistency": 0.2857142857142857,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ9",
+    "kind": "list",
+    "gold": [
+     "Incident3",
+     "Incident6",
+     "Incident7"
+    ],
+    "answer": [
+     "BruteForceAttack3",
+     "BruteForceAttack6",
+     "BruteForceAttack7"
+    ],
+    "correct": 0.0,
+    "consistency": 0.14285714285714285,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ10",
+    "kind": "list",
+    "gold": [
+     "CriticalServer1",
+     "FileServer7"
+    ],
+    "answer": [
+     "CriticalServer1",
+     "DevWS8",
+     "FileServer7"
+    ],
+    "correct": 0.8,
+    "consistency": 0.42857142857142855,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ11",
+    "kind": "list",
+    "gold": [
+     "BackupSystem1",
+     "BackupSystem7",
+     "DDoSShield4",
+     "EDR1"
+    ],
+    "answer": [
+     "BackupSystem1",
+     "BackupSystem7",
+     "DDoSShield4",
+     "Firewall6",
+     "MFA3"
+    ],
+    "correct": 0.6666666666666666,
+    "consistency": 0.8571428571428571,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ12",
+    "kind": "list",
+    "gold": [
+     "Alert1",
+     "Alert4"
+    ],
+    "answer": [
+     "Alert1",
+     "Alert3",
+     "Alert4"
+    ],
+    "correct": 0.8,
+    "consistency": 0.8571428571428571,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ13",
+    "kind": "list",
+    "gold": [
+     "AwarenessTraining2",
+     "BackupSystem1",
+     "BackupSystem7",
+     "DDoSShield4",
+     "MFA3"
+    ],
+    "answer": [
+     "Alert1",
+     "BackupSystem1",
+     "BackupSystem7",
+     "DDoSShield4",
+     "EDR1",
+     "Firewall6",
+     "MFA3"
+    ],
+    "correct": 0.6666666666666666,
+    "consistency": 0.2857142857142857,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ14",
+    "kind": "list",
+    "gold": [
+     "Incident6"
+    ],
+    "answer": [
+     "Incident6",
+     "Incident8"
+    ],
+    "correct": 0.6666666666666666,
+    "consistency": 0.5714285714285714,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ15",
+    "kind": "list",
+    "gold": [
+     "Incident3"
+    ],
+    "answer": [
+     "Incident5",
+     "Incident6"
+    ],
+    "correct": 0.0,
+    "consistency": 0.7142857142857143,
+    "hallucination": false,
+    "explanation": null
+   },
+   {
+    "id": "CQ16",
+    "kind": "list",
+    "gold": [
+     "Incident2",
+     "Incident5"
+    ],
+    "answer": [
+     "Incident2",
+     "Incident6"
+    ],
+    "correct": 0.5,
+    "consistency": 0.2857142857142857,
+    "hallucination": false,
+    "explanation": null
+   }
+  ]
+ },
+ "log": [
+  {
+   "cond": "C1",
+   "id": "SEV-Incident1",
+   "temp": 0.0,
+   "paraphrase": false,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 6.26
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident1",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.41
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident1",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.39
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident1",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.42
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident1",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.45
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident1",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.39
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident1",
+   "temp": 0.0,
+   "paraphrase": true,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.54
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident2",
+   "temp": 0.0,
+   "paraphrase": false,
+   "text": "ANSWER: Medium",
+   "answer": "Medium",
+   "latency_s": 0.56
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident2",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: Medium",
+   "answer": "Medium",
+   "latency_s": 0.41
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident2",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: Medium",
+   "answer": "Medium",
+   "latency_s": 0.41
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident2",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: Medium",
+   "answer": "Medium",
+   "latency_s": 0.41
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident2",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: Medium",
+   "answer": "Medium",
+   "latency_s": 0.41
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident2",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: Medium",
+   "answer": "Medium",
+   "latency_s": 0.42
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident2",
+   "temp": 0.0,
+   "paraphrase": true,
+   "text": "ANSWER: Medium",
+   "answer": "Medium",
+   "latency_s": 0.56
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident3",
+   "temp": 0.0,
+   "paraphrase": false,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.62
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident3",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.43
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident3",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.42
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident3",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.41
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident3",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.41
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident3",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.41
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident3",
+   "temp": 0.0,
+   "paraphrase": true,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.55
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident4",
+   "temp": 0.0,
+   "paraphrase": false,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.63
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident4",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.57
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident4",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.62
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident4",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.48
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident4",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.45
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident4",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.46
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident4",
+   "temp": 0.0,
+   "paraphrase": true,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.56
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident5",
+   "temp": 0.0,
+   "paraphrase": false,
+   "text": "ANSWER: Low",
+   "answer": "Low",
+   "latency_s": 0.57
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident5",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: Low",
+   "answer": "Low",
+   "latency_s": 0.43
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident5",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: Low",
+   "answer": "Low",
+   "latency_s": 0.44
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident5",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: Low",
+   "answer": "Low",
+   "latency_s": 0.48
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident5",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: Low",
+   "answer": "Low",
+   "latency_s": 0.44
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident5",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: Low",
+   "answer": "Low",
+   "latency_s": 0.52
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident5",
+   "temp": 0.0,
+   "paraphrase": true,
+   "text": "ANSWER: Low",
+   "answer": "Low",
+   "latency_s": 0.61
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident6",
+   "temp": 0.0,
+   "paraphrase": false,
+   "text": "ANSWER: Medium",
+   "answer": "Medium",
+   "latency_s": 0.66
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident6",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: Medium",
+   "answer": "Medium",
+   "latency_s": 0.51
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident6",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: Medium",
+   "answer": "Medium",
+   "latency_s": 0.48
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident6",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: Low",
+   "answer": "Low",
+   "latency_s": 0.48
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident6",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: Low",
+   "answer": "Low",
+   "latency_s": 0.42
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident6",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: Medium",
+   "answer": "Medium",
+   "latency_s": 0.43
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident6",
+   "temp": 0.0,
+   "paraphrase": true,
+   "text": "ANSWER: Medium",
+   "answer": "Medium",
+   "latency_s": 0.57
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident7",
+   "temp": 0.0,
+   "paraphrase": false,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.57
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident7",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.43
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident7",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.43
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident7",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.45
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident7",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.48
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident7",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.49
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident7",
+   "temp": 0.0,
+   "paraphrase": true,
+   "text": "ANSWER: High",
+   "answer": "High",
+   "latency_s": 0.62
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident8",
+   "temp": 0.0,
+   "paraphrase": false,
+   "text": "ANSWER: Undetermined",
+   "answer": "Undetermined",
+   "latency_s": 0.75
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident8",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: Undetermined",
+   "answer": "Undetermined",
+   "latency_s": 0.73
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident8",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: Undetermined",
+   "answer": "Undetermined",
+   "latency_s": 0.52
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident8",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: Undetermined",
+   "answer": "Undetermined",
+   "latency_s": 0.52
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident8",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: Undetermined",
+   "answer": "Undetermined",
+   "latency_s": 0.52
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident8",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: Undetermined",
+   "answer": "Undetermined",
+   "latency_s": 0.53
+  },
+  {
+   "cond": "C1",
+   "id": "SEV-Incident8",
+   "temp": 0.0,
+   "paraphrase": true,
+   "text": "ANSWER: Undetermined",
+   "answer": "Undetermined",
+   "latency_s": 0.68
+  },
+  {
+   "cond": "C1",
+   "id": "CQ1",
+   "temp": 0.0,
+   "paraphrase": false,
+   "text": "CriticalServer1, AdminAccount3, and FileServer7.",
+   "answer": [
+    "AdminAccount3",
+    "CriticalServer1",
+    "FileServer7"
+   ],
+   "latency_s": 1.44
+  },
+  {
+   "cond": "C1",
+   "id": "CQ1",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "CriticalServer1, AdminAccount3, and FileServer7, TestServer6.",
+   "answer": [
+    "AdminAccount3",
+    "CriticalServer1",
+    "FileServer7",
+    "TestServer6"
+   ],
+   "latency_s": 1.49
+  },
+  {
+   "cond": "C1",
+   "id": "CQ1",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "CriticalServer1, AdminAccount3, and FileServer7. \n\nANSWER: High, High, High",
+   "answer": [],
+   "latency_s": 1.97
+  },
+  {
+   "cond": "C1",
+   "id": "CQ1",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "CriticalServer1, FileServer7, AdminAccount3, FinanceWS2, CriticalServer1, TestServer6, WebPortal4, KioskWS5.",
+   "answer": [
+    "AdminAccount3",
+    "CriticalServer1",
+    "FileServer7",
+    "FinanceWS2",
+    "KioskWS5",
+    "TestServer6",
+    "WebPortal4"
+   ],
+   "latency_s": 2.93
+  },
+  {
+   "cond": "C1",
+   "id": "CQ1",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "CriticalServer1, TestServer6",
+   "answer": [
+    "CriticalServer1",
+    "TestServer6"
+   ],
+   "latency_s": 0.67
+  },
+  {
+   "cond": "C1",
+   "id": "CQ1",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "CriticalServer1, FinanceWS2, AdminAccount3, WebPortal4, and TestServer6.",
+   "answer": [
+    "AdminAccount3",
+    "CriticalServer1",
+    "FinanceWS2",
+    "TestServer6",
+    "WebPortal4"
+   ],
+   "latency_s": 1.87
+  },
+  {
+   "cond": "C1",
+   "id": "CQ1",
+   "temp": 0.0,
+   "paraphrase": true,
+   "text": "CriticalServer1, FinanceWS2, AdminAccount3, WebPortal4, CriticalServer1, FileServer7, TestServer6",
+   "answer": [
+    "AdminAccount3",
+    "CriticalServer1",
+    "FileServer7",
+    "FinanceWS2",
+    "TestServer6",
+    "WebPortal4"
+   ],
+   "latency_s": 2.44
+  },
+  {
+   "cond": "C1",
+   "id": "CQ2",
+   "temp": 0.0,
+   "paraphrase": false,
+   "text": "ANSWER: High, CriticalServer1, FileServer7",
+   "answer": [
+    "CriticalServer1",
+    "FileServer7"
+   ],
+   "latency_s": 1.2
+  },
+  {
+   "cond": "C1",
+   "id": "CQ2",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: High, High, Low",
+   "answer": [],
+   "latency_s": 0.74
+  },
+  {
+   "cond": "C1",
+   "id": "CQ2",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: High, High, Medium",
+   "answer": [],
+   "latency_s": 0.92
+  },
+  {
+   "cond": "C1",
+   "id": "CQ2",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident1, Incident4, and Incident7 are of High severity.",
+   "answer": [
+    "Incident1",
+    "Incident4",
+    "Incident7"
+   ],
+   "latency_s": 1.35
+  },
+  {
+   "cond": "C1",
+   "id": "CQ2",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident1, Incident4, Incident7, and Incident8 are of High severity.",
+   "answer": [
+    "Incident1",
+    "Incident4",
+    "Incident7",
+    "Incident8"
+   ],
+   "latency_s": 1.57
+  },
+  {
+   "cond": "C1",
+   "id": "CQ2",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: High, FileServer7, CriticalServer1",
+   "answer": [
+    "CriticalServer1",
+    "FileServer7"
+   ],
+   "latency_s": 1.06
+  },
+  {
+   "cond": "C1",
+   "id": "CQ2",
+   "temp": 0.0,
+   "paraphrase": true,
+   "text": "Incident1, Incident4, Incident7",
+   "answer": [
+    "Incident1",
+    "Incident4",
+    "Incident7"
+   ],
+   "latency_s": 0.97
+  },
+  {
+   "cond": "C1",
+   "id": "CQ3",
+   "temp": 0.0,
+   "paraphrase": false,
+   "text": "Incident2, Incident3, Incident5, and Incident6 are of medium severity.",
+   "answer": [
+    "Incident2",
+    "Incident3",
+    "Incident5",
+    "Incident6"
+   ],
+   "latency_s": 1.69
+  },
+  {
+   "cond": "C1",
+   "id": "CQ3",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident6 and Incident7 are of Medium severity.",
+   "answer": [
+    "Incident6",
+    "Incident7"
+   ],
+   "latency_s": 0.99
+  },
+  {
+   "cond": "C1",
+   "id": "CQ3",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "High, Medium, Medium, Medium",
+   "answer": [],
+   "latency_s": 0.65
+  },
+  {
+   "cond": "C1",
+   "id": "CQ3",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: High, Moderate",
+   "answer": [],
+   "latency_s": 0.58
+  },
+  {
+   "cond": "C1",
+   "id": "CQ3",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident6 and Incident7 are of Medium severity.",
+   "answer": [
+    "Incident6",
+    "Incident7"
+   ],
+   "latency_s": 0.98
+  },
+  {
+   "cond": "C1",
+   "id": "CQ3",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: High, Moderate",
+   "answer": [],
+   "latency_s": 0.58
+  },
+  {
+   "cond": "C1",
+   "id": "CQ3",
+   "temp": 0.0,
+   "paraphrase": true,
+   "text": "Incident3, Incident4, Incident7",
+   "answer": [
+    "Incident3",
+    "Incident4",
+    "Incident7"
+   ],
+   "latency_s": 0.96
+  },
+  {
+   "cond": "C1",
+   "id": "CQ4",
+   "temp": 0.0,
+   "paraphrase": false,
+   "text": "Incident5 (TrojanAttack5) and Incident6 (BruteForceAttack6) are of Low severity.",
+   "answer": [
+    "Incident5",
+    "Incident6"
+   ],
+   "latency_s": 2.16
+  },
+  {
+   "cond": "C1",
+   "id": "CQ4",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "ANSWER: Incident5, Incident6",
+   "answer": [
+    "Incident5",
+    "Incident6"
+   ],
+   "latency_s": 0.74
+  },
+  {
+   "cond": "C1",
+   "id": "CQ4",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident5, Incident6",
+   "answer": [
+    "Incident5",
+    "Incident6"
+   ],
+   "latency_s": 0.57
+  },
+  {
+   "cond": "C1",
+   "id": "CQ4",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident5 (KioskWS5) and Incident6 (TestServer6)",
+   "answer": [
+    "Incident5",
+    "Incident6"
+   ],
+   "latency_s": 1.47
+  },
+  {
+   "cond": "C1",
+   "id": "CQ4",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident5 (KioskWS5), Incident6 (TestServer6)",
+   "answer": [
+    "Incident5",
+    "Incident6"
+   ],
+   "latency_s": 1.41
+  },
+  {
+   "cond": "C1",
+   "id": "CQ4",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident5, Incident6",
+   "answer": [
+    "Incident5",
+    "Incident6"
+   ],
+   "latency_s": 0.58
+  },
+  {
+   "cond": "C1",
+   "id": "CQ4",
+   "temp": 0.0,
+   "paraphrase": true,
+   "text": "Incident5, Incident6",
+   "answer": [
+    "Incident5",
+    "Incident6"
+   ],
+   "latency_s": 0.72
+  },
+  {
+   "cond": "C1",
+   "id": "CQ5",
+   "temp": 0.0,
+   "paraphrase": false,
+   "text": "Incident1, Incident7",
+   "answer": [
+    "Incident1",
+    "Incident7"
+   ],
+   "latency_s": 0.71
+  },
+  {
+   "cond": "C1",
+   "id": "CQ5",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident1, Incident7",
+   "answer": [
+    "Incident1",
+    "Incident7"
+   ],
+   "latency_s": 0.57
+  },
+  {
+   "cond": "C1",
+   "id": "CQ5",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident1, Incident7",
+   "answer": [
+    "Incident1",
+    "Incident7"
+   ],
+   "latency_s": 0.58
+  },
+  {
+   "cond": "C1",
+   "id": "CQ5",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident1, Incident7",
+   "answer": [
+    "Incident1",
+    "Incident7"
+   ],
+   "latency_s": 0.57
+  },
+  {
+   "cond": "C1",
+   "id": "CQ5",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident1, Incident7",
+   "answer": [
+    "Incident1",
+    "Incident7"
+   ],
+   "latency_s": 0.57
+  },
+  {
+   "cond": "C1",
+   "id": "CQ5",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident1 and Incident7 involve ransomware.",
+   "answer": [
+    "Incident1",
+    "Incident7"
+   ],
+   "latency_s": 0.91
+  },
+  {
+   "cond": "C1",
+   "id": "CQ5",
+   "temp": 0.0,
+   "paraphrase": true,
+   "text": "Incident1, Incident7",
+   "answer": [
+    "Incident1",
+    "Incident7"
+   ],
+   "latency_s": 0.72
+  },
+  {
+   "cond": "C1",
+   "id": "CQ6",
+   "temp": 0.0,
+   "paraphrase": false,
+   "text": "T1486 (Data Encrypted for Impact), T1190 (Exploit Public-Facing Application), T1490 (Inhibit System Recovery), UnpatchedDB1 (UnpatchedSoftware, CVSS v3.1 base score 9.8), UnpatchedSMB7 (UnpatchedSoftware, CVSS v3.1 base score 9.8), WeakPassword3 (WeakPassword, CVSS v3.1 base score 6.5), WeakPassword6 (WeakPassword, CVSS v3.1 base score 4.3)",
+   "answer": [
+    "T1190",
+    "T1486",
+    "T1490",
+    "UnpatchedDB1",
+    "UnpatchedSMB7",
+    "WeakPassword3",
+    "WeakPassword6"
+   ],
+   "latency_s": 11.28
+  },
+  {
+   "cond": "C1",
+   "id": "CQ6",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "T1190 (Exploit Public-Facing Application), T1486 (Data Encrypted for Impact), T1490 (Inhibit System Recovery), T1190 (Exploit Public-Facing Application), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1190 (Exploit Public-Facing Application), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1190 (Exploit Public-Facing Application), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1190 (Exploit Public-Facing Application), T1486 (Data Encrypted for Impact), T1190 (Exploit Public-Facing Application), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1190 (Exploit Public-Facing Application), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data Encrypted for Impact), T1486 (Data",
+   "answer": [
+    "T1190",
+    "T1486",
+    "T1490"
+   ],
+   "latency_s": 68.03
+  },
+  {
+   "cond": "C1",
+   "id": "CQ6",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "T1486 (Data Encrypted for Impact), T1190 (Exploit Public-Facing Application), T1190 (Exploit Public-Facing Application) and T1490 (Inhibit System Recovery), T1110 (Brute Force) and T1498 (Network Denial of Service).",
+   "answer": [
+    "T1110",
+    "T1190",
+    "T1486",
+    "T1490",
+    "T1498"
+   ],
+   "latency_s": 4.62
+  },
+  {
+   "cond": "C1",
+   "id": "CQ6",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident3 (BruteForceAttack3) and Incident7 (RansomwareAttack7) and Incident8 (MalwareAttack8).",
+   "answer": [
+    "Incident3",
+    "Incident7",
+    "Incident8"
+   ],
+   "latency_s": 2.23
+  },
+  {
+   "cond": "C1",
+   "id": "CQ6",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident1 (RansomwareAttack1) and Incident7 (RansomwareAttack7) exploit UnpatchedDB1 (UnpatchedSoftware, CVSS v3.1 base score 9.8) and UnpatchedSMB7 (UnpatchedSoftware, CVSS v3.1 base score 9.8) respectively.",
+   "answer": [
+    "Incident1",
+    "Incident7",
+    "UnpatchedDB1",
+    "UnpatchedSMB7"
+   ],
+   "latency_s": 5.49
+  },
+  {
+   "cond": "C1",
+   "id": "CQ6",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "T1486, T1190, T1490, T1190, T1486, T1110, T1490, T1190, T1486, T1490.",
+   "answer": [
+    "T1110",
+    "T1190",
+    "T1486",
+    "T1490"
+   ],
+   "latency_s": 3.58
+  },
+  {
+   "cond": "C1",
+   "id": "CQ6",
+   "temp": 0.0,
+   "paraphrase": true,
+   "text": "T1486 (Data Encrypted for Impact), T1190 (Exploit Public-Facing Application), T1490 (Inhibit System Recovery), UnpatchedDB1 (UnpatchedSoftware, CVSS v3.1 base score 9.8), UnpatchedSMB7 (UnpatchedSoftware, CVSS v3.1 base score 9.8), WeakPassword3 (WeakPassword, CVSS v3.1 base score 6.5), WeakPassword6 (WeakPassword, CVSS v3.1 base score 4.3)",
+   "answer": [
+    "T1190",
+    "T1486",
+    "T1490",
+    "UnpatchedDB1",
+    "UnpatchedSMB7",
+    "WeakPassword3",
+    "WeakPassword6"
+   ],
+   "latency_s": 10.15
+  },
+  {
+   "cond": "C1",
+   "id": "CQ7",
+   "temp": 0.0,
+   "paraphrase": false,
+   "text": "UnpatchedDB1, UnpatchedSMB7, CriticalServer1",
+   "answer": [
+    "CriticalServer1",
+    "UnpatchedDB1",
+    "UnpatchedSMB7"
+   ],
+   "latency_s": 1.65
+  },
+  {
+   "cond": "C1",
+   "id": "CQ7",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "UnpatchedDB1, UnpatchedSMB7 and no recorded vulnerability for Incident8.",
+   "answer": [
+    "Incident8",
+    "UnpatchedDB1",
+    "UnpatchedSMB7"
+   ],
+   "latency_s": 1.74
+  },
+  {
+   "cond": "C1",
+   "id": "CQ7",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "UnpatchedDB1 (UnpatchedSoftware, CVSS v3.1 base score 9.8), UnpatchedSMB7 (UnpatchedSoftware, CVSS v3.1 base score 9.8), BackupSystem1 (BackupSystem) protects CriticalServer1; mitigates threat RansomwareAttack1, and OpenSSH6 (OpenPort, CVSS v3.1 base score 5.3) are rated High or Critical under CVSS v3.1.",
+   "answer": [
+    "BackupSystem1",
+    "CriticalServer1",
+    "OpenSSH6",
+    "RansomwareAttack1",
+    "UnpatchedDB1",
+    "UnpatchedSMB7"
+   ],
+   "latency_s": 8.58
+  },
+  {
+   "cond": "C1",
+   "id": "CQ7",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "UnpatchedDB1 (UnpatchedSoftware, CVSS v3.1 base score 9.8), UnpatchedSMB7 (UnpatchedSoftware, CVSS v3.1 base score 9.8), OpenSSH6 (OpenPort, CVSS v3.1 base score 5.3), WeakPassword3 (WeakPassword, CVSS v3.1 base score 6.5), BackupSystem7 (BackupSystem, CVSS v3.1 base score not recorded but likely High), CriticalServer1 (Server, CVSS v3.1 base score not recorded but likely High).",
+   "answer": [
+    "BackupSystem7",
+    "CriticalServer1",
+    "OpenSSH6",
+    "UnpatchedDB1",
+    "UnpatchedSMB7",
+    "WeakPassword3"
+   ],
+   "latency_s": 10.7
+  },
+  {
+   "cond": "C1",
+   "id": "CQ7",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "UnpatchedDB1, UnpatchedSMB7, CriticalServer1, and WebPortal4 are rated High or Critical under CVSS v3.1.",
+   "answer": [
+    "CriticalServer1",
+    "UnpatchedDB1",
+    "UnpatchedSMB7",
+    "WebPortal4"
+   ],
+   "latency_s": 2.85
+  },
+  {
+   "cond": "C1",
+   "id": "CQ7",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "UnpatchedDB1, UnpatchedSMB7, CriticalServer1, FileServer7, TestServer6",
+   "answer": [
+    "CriticalServer1",
+    "FileServer7",
+    "TestServer6",
+    "UnpatchedDB1",
+    "UnpatchedSMB7"
+   ],
+   "latency_s": 2.33
+  },
+  {
+   "cond": "C1",
+   "id": "CQ7",
+   "temp": 0.0,
+   "paraphrase": true,
+   "text": "UnpatchedDB1, UnpatchedSMB7",
+   "answer": [
+    "UnpatchedDB1",
+    "UnpatchedSMB7"
+   ],
+   "latency_s": 1.23
+  },
+  {
+   "cond": "C1",
+   "id": "CQ8",
+   "temp": 0.0,
+   "paraphrase": false,
+   "text": "RansomwareAttack1, PhishingAttack2, BruteForceAttack3, DDoSAttack4, TrojanAttack5, BruteForceAttack6, RansomwareAttack7.",
+   "answer": [
+    "BruteForceAttack3",
+    "BruteForceAttack6",
+    "DDoSAttack4",
+    "PhishingAttack2",
+    "RansomwareAttack1",
+    "RansomwareAttack7",
+    "TrojanAttack5"
+   ],
+   "latency_s": 3.55
+  },
+  {
+   "cond": "C1",
+   "id": "CQ8",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "RansomwareAttack1, a RansomwareAttack using T1486 (Data Encrypted for Impact), T1190 (Exploit Public-Facing Application), T1490 (Inhibit System Recovery) and exploiting UnpatchedDB1 (UnpatchedSoftware, CVSS v3.1 base score 9.8); was caused by Attacker1 (ExternalAttacker).",
+   "answer": [
+    "Attacker1",
+    "RansomwareAttack1",
+    "T1190",
+    "T1486",
+    "T1490",
+    "UnpatchedDB1"
+   ],
+   "latency_s": 6.52
+  },
+  {
+   "cond": "C1",
+   "id": "CQ8",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "RansomwareAttack1, uses T1486 (Data Encrypted for Impact).",
+   "answer": [
+    "RansomwareAttack1",
+    "T1486"
+   ],
+   "latency_s": 1.47
+  },
+  {
+   "cond": "C1",
+   "id": "CQ8",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "T1486 (Data Encrypted for Impact), T1190 (Exploit Public-Facing Application), T1490 (Inhibit System Recovery), T1566 (Phishing)",
+   "answer": [
+    "T1190",
+    "T1486",
+    "T1490",
+    "T1566"
+   ],
+   "latency_s": 3.09
+  },
+  {
+   "cond": "C1",
+   "id": "CQ8",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "T1486 (Data Encrypted for Impact)",
+   "answer": [
+    "T1486"
+   ],
+   "latency_s": 0.9
+  },
+  {
+   "cond": "C1",
+   "id": "CQ8",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Data Encrypted for Impact, Exploit Public-Facing Application, Inhibit System Recovery, Brute Force, Valid Accounts, Data Encrypted for Impact, Network Denial of Service, User Execution, Data Encrypted for Impact, Brute Force, WeakPassword, Data Encrypted for Impact, Brute Force.",
+   "answer": [],
+   "latency_s": 5.26
+  },
+  {
+   "cond": "C1",
+   "id": "CQ8",
+   "temp": 0.0,
+   "paraphrase": true,
+   "text": "ERROR timed out",
+   "answer": [],
+   "latency_s": 600.01
+  },
+  {
+   "cond": "C1",
+   "id": "CQ9",
+   "temp": 0.0,
+   "paraphrase": false,
+   "text": "BruteForceAttack3, BruteForceAttack6, and BruteForceAttack7 involve a credential-access technique.",
+   "answer": [
+    "BruteForceAttack3",
+    "BruteForceAttack6",
+    "BruteForceAttack7"
+   ],
+   "latency_s": 8.78
+  },
+  {
+   "cond": "C1",
+   "id": "CQ9",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident2 (PhishingAttack2), Incident3 (BruteForceAttack3) and Incident7 (RansomwareAttack7, BruteForceAttack7) involve a credential-access technique. \n\nANSWER: High",
+   "answer": [],
+   "latency_s": 3.74
+  },
+  {
+   "cond": "C1",
+   "id": "CQ9",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident3 (BruteForceAttack3) and Incident2 (PhishingAttack2) and Incident7 (RansomwareAttack7) and Incident7 (BruteForceAttack7) and Incident6 (BruteForceAttack6) involve credential-access techniques.",
+   "answer": [
+    "Incident2",
+    "Incident3",
+    "Incident6",
+    "Incident7"
+   ],
+   "latency_s": 4.62
+  },
+  {
+   "cond": "C1",
+   "id": "CQ9",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "BruteForceAttack3 (T1110) and BruteForceAttack6 (T1110) involve credential-access techniques, specifically Brute Force.",
+   "answer": [
+    "BruteForceAttack3",
+    "BruteForceAttack6"
+   ],
+   "latency_s": 2.89
+  },
+  {
+   "cond": "C1",
+   "id": "CQ9",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident1, Incident3, Incident7",
+   "answer": [
+    "Incident1",
+    "Incident3",
+    "Incident7"
+   ],
+   "latency_s": 0.97
+  },
+  {
+   "cond": "C1",
+   "id": "CQ9",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "BruteForceAttack3, BruteForceAttack6, and PhishingAttack2 involve a credential-access technique. \n\nANSWER: BruteForceAttack3, BruteForceAttack6, PhishingAttack2",
+   "answer": [
+    "BruteForceAttack3",
+    "BruteForceAttack6",
+    "PhishingAttack2"
+   ],
+   "latency_s": 3.81
+  },
+  {
+   "cond": "C1",
+   "id": "CQ9",
+   "temp": 0.0,
+   "paraphrase": true,
+   "text": "BruteForceAttack3, BruteForceAttack6, PhishingAttack2, TrojanAttack5",
+   "answer": [
+    "BruteForceAttack3",
+    "BruteForceAttack6",
+    "PhishingAttack2",
+    "TrojanAttack5"
+   ],
+   "latency_s": 2.08
+  },
+  {
+   "cond": "C1",
+   "id": "CQ10",
+   "temp": 0.0,
+   "paraphrase": false,
+   "text": "CriticalServer1, FileServer7, and DevWS8 carry a severe vulnerability.",
+   "answer": [
+    "CriticalServer1",
+    "DevWS8",
+    "FileServer7"
+   ],
+   "latency_s": 1.66
+  },
+  {
+   "cond": "C1",
+   "id": "CQ10",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "CriticalServer1 and FileServer7, and DevWS8 are all at risk of being exploited with severe vulnerabilities.",
+   "answer": [
+    "CriticalServer1",
+    "DevWS8",
+    "FileServer7"
+   ],
+   "latency_s": 2.09
+  },
+  {
+   "cond": "C1",
+   "id": "CQ10",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "CriticalServer1 (High) and FileServer7 (High) carry a severe vulnerability.",
+   "answer": [
+    "CriticalServer1",
+    "FileServer7"
+   ],
+   "latency_s": 1.74
+  },
+  {
+   "cond": "C1",
+   "id": "CQ10",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "CriticalServer1, FileServer7.",
+   "answer": [
+    "CriticalServer1",
+    "FileServer7"
+   ],
+   "latency_s": 0.74
+  },
+  {
+   "cond": "C1",
+   "id": "CQ10",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "CriticalServer1, FileServer7, and TestServer6.",
+   "answer": [
+    "CriticalServer1",
+    "FileServer7",
+    "TestServer6"
+   ],
+   "latency_s": 1.2
+  },
+  {
+   "cond": "C1",
+   "id": "CQ10",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "CriticalServer1, FileServer7.",
+   "answer": [
+    "CriticalServer1",
+    "FileServer7"
+   ],
+   "latency_s": 0.78
+  },
+  {
+   "cond": "C1",
+   "id": "CQ10",
+   "temp": 0.0,
+   "paraphrase": true,
+   "text": "CriticalServer1, FileServer7, DevWS8",
+   "answer": [
+    "CriticalServer1",
+    "DevWS8",
+    "FileServer7"
+   ],
+   "latency_s": 1.15
+  },
+  {
+   "cond": "C1",
+   "id": "CQ11",
+   "temp": 0.0,
+   "paraphrase": false,
+   "text": "BackupSystem1, BackupSystem7, DDoSShield4, Firewall6, MFA3.",
+   "answer": [
+    "BackupSystem1",
+    "BackupSystem7",
+    "DDoSShield4",
+    "Firewall6",
+    "MFA3"
+   ],
+   "latency_s": 2.38
+  },
+  {
+   "cond": "C1",
+   "id": "CQ11",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "BackupSystem1 (BackupSystem), BackupSystem7 (BackupSystem), DDoSShield4 (DDoSMitigationService), EDR1 (Antivirus), Firewall6 (FirewallRule), MFA3 (MultiFactorAuthentication)",
+   "answer": [
+    "BackupSystem1",
+    "BackupSystem7",
+    "DDoSShield4",
+    "EDR1",
+    "Firewall6",
+    "MFA3"
+   ],
+   "latency_s": 4.46
+  },
+  {
+   "cond": "C1",
+   "id": "CQ11",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "BackupSystem1, BackupSystem7, DDoSShield4, EDR1, MFA3, Firewall6.",
+   "answer": [
+    "BackupSystem1",
+    "BackupSystem7",
+    "DDoSShield4",
+    "EDR1",
+    "Firewall6",
+    "MFA3"
+   ],
+   "latency_s": 2.19
+  },
+  {
+   "cond": "C1",
+   "id": "CQ11",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "BackupSystem1, BackupSystem7, DDoSShield4, EDR1, Firewall6, MFA3.",
+   "answer": [
+    "BackupSystem1",
+    "BackupSystem7",
+    "DDoSShield4",
+    "EDR1",
+    "Firewall6",
+    "MFA3"
+   ],
+   "latency_s": 2.22
+  },
+  {
+   "cond": "C1",
+   "id": "CQ11",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "BackupSystem1 (BackupSystem), BackupSystem7 (BackupSystem), DDoSShield4 (DDoSMitigationService), EDR1 (Antivirus), Firewall6 (FirewallRule), and MFA3 (MultiFactorAuthentication) protect assets affected by high-severity incidents.",
+   "answer": [
+    "BackupSystem1",
+    "BackupSystem7",
+    "DDoSShield4",
+    "EDR1",
+    "Firewall6",
+    "MFA3"
+   ],
+   "latency_s": 4.95
+  },
+  {
+   "cond": "C1",
+   "id": "CQ11",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "BackupSystem1, BackupSystem7, DDoSShield4, EDR1, Firewall6, MFA3.",
+   "answer": [
+    "BackupSystem1",
+    "BackupSystem7",
+    "DDoSShield4",
+    "EDR1",
+    "Firewall6",
+    "MFA3"
+   ],
+   "latency_s": 2.25
+  },
+  {
+   "cond": "C1",
+   "id": "CQ11",
+   "temp": 0.0,
+   "paraphrase": true,
+   "text": "BackupSystem1, BackupSystem7, DDoSShield4, EDR1, Firewall6, MFA3",
+   "answer": [
+    "BackupSystem1",
+    "BackupSystem7",
+    "DDoSShield4",
+    "EDR1",
+    "Firewall6",
+    "MFA3"
+   ],
+   "latency_s": 2.27
+  },
+  {
+   "cond": "C1",
+   "id": "CQ12",
+   "temp": 0.0,
+   "paraphrase": false,
+   "text": "Alert1, Alert3, Alert4",
+   "answer": [
+    "Alert1",
+    "Alert3",
+    "Alert4"
+   ],
+   "latency_s": 0.88
+  },
+  {
+   "cond": "C1",
+   "id": "CQ12",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Alert1, Alert3, Alert4",
+   "answer": [
+    "Alert1",
+    "Alert3",
+    "Alert4"
+   ],
+   "latency_s": 0.74
+  },
+  {
+   "cond": "C1",
+   "id": "CQ12",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Alert1, Alert3, Alert4",
+   "answer": [
+    "Alert1",
+    "Alert3",
+    "Alert4"
+   ],
+   "latency_s": 0.73
+  },
+  {
+   "cond": "C1",
+   "id": "CQ12",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Alert1, Alert4, and Alert7 report high-severity incidents (RansomwareAttack1).",
+   "answer": [
+    "Alert1",
+    "Alert4",
+    "Alert7"
+   ],
+   "latency_s": 1.78
+  },
+  {
+   "cond": "C1",
+   "id": "CQ12",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Alert1, Alert3, Alert4",
+   "answer": [
+    "Alert1",
+    "Alert3",
+    "Alert4"
+   ],
+   "latency_s": 0.73
+  },
+  {
+   "cond": "C1",
+   "id": "CQ12",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Alert1, Alert4 and Alert3 report high-severity incidents.",
+   "answer": [
+    "Alert1",
+    "Alert3",
+    "Alert4"
+   ],
+   "latency_s": 1.22
+  },
+  {
+   "cond": "C1",
+   "id": "CQ12",
+   "temp": 0.0,
+   "paraphrase": true,
+   "text": "Alert1, Alert3, Alert4",
+   "answer": [
+    "Alert1",
+    "Alert3",
+    "Alert4"
+   ],
+   "latency_s": 0.88
+  },
+  {
+   "cond": "C1",
+   "id": "CQ13",
+   "temp": 0.0,
+   "paraphrase": false,
+   "text": "Alert1 (Alert), BackupSystem1 (BackupSystem), BackupSystem7 (BackupSystem), DDoSShield4 (DDoSMitigationService), EDR1 (Antivirus), Firewall6 (FirewallRule), MFA3 (MultiFactorAuthentication)",
+   "answer": [
+    "Alert1",
+    "BackupSystem1",
+    "BackupSystem7",
+    "DDoSShield4",
+    "EDR1",
+    "Firewall6",
+    "MFA3"
+   ],
+   "latency_s": 4.86
+  },
+  {
+   "cond": "C1",
+   "id": "CQ13",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Alert1 (Alert), BackupSystem1 (BackupSystem), BackupSystem7 (BackupSystem), DDoSShield4 (DDoSMitigationService), EDR1 (Antivirus), MFA3 (MultiFactorAuthentication)",
+   "answer": [
+    "Alert1",
+    "BackupSystem1",
+    "BackupSystem7",
+    "DDoSShield4",
+    "EDR1",
+    "MFA3"
+   ],
+   "latency_s": 4.17
+  },
+  {
+   "cond": "C1",
+   "id": "CQ13",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "EDR1 (Antivirus), BackupSystem1 (BackupSystem), BackupSystem7 (BackupSystem), DDoSShield4 (DDoSMitigationService), MFA3 (MultiFactorAuthentication), MailGateway2 (FirewallRule), Firewall6 (FirewallRule)",
+   "answer": [
+    "BackupSystem1",
+    "BackupSystem7",
+    "DDoSShield4",
+    "EDR1",
+    "Firewall6",
+    "MFA3",
+    "MailGateway2"
+   ],
+   "latency_s": 5.56
+  },
+  {
+   "cond": "C1",
+   "id": "CQ13",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "BackupSystem1, BackupSystem7, DDoSShield4, Firewall6, MailGateway2",
+   "answer": [
+    "BackupSystem1",
+    "BackupSystem7",
+    "DDoSShield4",
+    "Firewall6",
+    "MailGateway2"
+   ],
+   "latency_s": 1.88
+  },
+  {
+   "cond": "C1",
+   "id": "CQ13",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Alert3 (Alert) mitigates threat BruteForceAttack3, \nMFA3 (MultiFactorAuthentication) mitigates threat BruteForceAttack3, \nFirewall6 (FirewallRule) mitigates vulnerability OpenSSH6, \nDDoSShield4 (DDoSMitigationService) mitigates threat DDoSAttack4,\nBackupSystem1 (BackupSystem) mitigates threat RansomwareAttack1, \nBackupSystem7 (BackupSystem) mitigates threat RansomwareAttack7.\n\nANSWER: Alert3, MFA3, Firewall6, DDoSShield4, BackupSystem1, BackupSystem7",
+   "answer": [
+    "Alert3",
+    "BackupSystem1",
+    "BackupSystem7",
+    "DDoSShield4",
+    "Firewall6",
+    "MFA3"
+   ],
+   "latency_s": 11.13
+  },
+  {
+   "cond": "C1",
+   "id": "CQ13",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Alert1 (Alert) mitigates threat PhishingAttack2, Alert3 (Alert) mitigates threat BruteForceAttack3, Alert4 (Alert) mitigates threat DDoSAttack4.",
+   "answer": [
+    "Alert1",
+    "Alert3",
+    "Alert4",
+    "BruteForceAttack3",
+    "DDoSAttack4",
+    "PhishingAttack2"
+   ],
+   "latency_s": 3.42
+  },
+  {
+   "cond": "C1",
+   "id": "CQ13",
+   "temp": 0.0,
+   "paraphrase": true,
+   "text": "Alert1 (Alert), BackupSystem1 (BackupSystem), BackupSystem7 (BackupSystem), DDoSShield4 (DDoSMitigationService), EDR1 (Antivirus), Firewall6 (FirewallRule), MFA3 (MultiFactorAuthentication)",
+   "answer": [
+    "Alert1",
+    "BackupSystem1",
+    "BackupSystem7",
+    "DDoSShield4",
+    "EDR1",
+    "Firewall6",
+    "MFA3"
+   ],
+   "latency_s": 4.77
+  },
+  {
+   "cond": "C1",
+   "id": "CQ14",
+   "temp": 0.0,
+   "paraphrase": false,
+   "text": "Incident6 and Incident8.",
+   "answer": [
+    "Incident6",
+    "Incident8"
+   ],
+   "latency_s": 0.91
+  },
+  {
+   "cond": "C1",
+   "id": "CQ14",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident6 and Incident8 were caused by Insider6 and Insider (Insider), respectively.",
+   "answer": [
+    "Incident6",
+    "Incident8",
+    "Insider6"
+   ],
+   "latency_s": 2.12
+  },
+  {
+   "cond": "C1",
+   "id": "CQ14",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident6, Incident8",
+   "answer": [
+    "Incident6",
+    "Incident8"
+   ],
+   "latency_s": 0.61
+  },
+  {
+   "cond": "C1",
+   "id": "CQ14",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident6 and Incident8 were caused by Insider6 and Insider (Insider) respectively.",
+   "answer": [
+    "Incident6",
+    "Incident8",
+    "Insider6"
+   ],
+   "latency_s": 1.66
+  },
+  {
+   "cond": "C1",
+   "id": "CQ14",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident6 and Incident8.",
+   "answer": [
+    "Incident6",
+    "Incident8"
+   ],
+   "latency_s": 0.67
+  },
+  {
+   "cond": "C1",
+   "id": "CQ14",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident6 and Incident8",
+   "answer": [
+    "Incident6",
+    "Incident8"
+   ],
+   "latency_s": 0.58
+  },
+  {
+   "cond": "C1",
+   "id": "CQ14",
+   "temp": 0.0,
+   "paraphrase": true,
+   "text": "Insider6, Incident6",
+   "answer": [
+    "Incident6",
+    "Insider6"
+   ],
+   "latency_s": 0.72
+  },
+  {
+   "cond": "C1",
+   "id": "CQ15",
+   "temp": 0.0,
+   "paraphrase": false,
+   "text": "Incident5 (KioskWS5) and Incident6 (TestServer6) involve non-severe threats.",
+   "answer": [
+    "Incident5",
+    "Incident6"
+   ],
+   "latency_s": 2.4
+  },
+  {
+   "cond": "C1",
+   "id": "CQ15",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident5 (KioskWS5), Incident6 (TestServer6)",
+   "answer": [
+    "Incident5",
+    "Incident6"
+   ],
+   "latency_s": 1.4
+  },
+  {
+   "cond": "C1",
+   "id": "CQ15",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident5 (KioskWS5) and Incident6 (TestServer6) involve non-severe threats, namely TrojanAttack5 (T1204) and BruteForceAttack6 (T1110), respectively.",
+   "answer": [
+    "BruteForceAttack6",
+    "Incident5",
+    "Incident6",
+    "TrojanAttack5"
+   ],
+   "latency_s": 3.76
+  },
+  {
+   "cond": "C1",
+   "id": "CQ15",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident5 (TrojanAttack5, affecting KioskWS5, business criticality Low) and Incident6 (BruteForceAttack6, affecting TestServer6, business criticality Moderate) involve only non-severe threats, TrojanAttack5 being a moderate threat and BruteForceAttack6 being a low threat.\n\nANSWER: Incident5, Incident6",
+   "answer": [
+    "Incident5",
+    "Incident6"
+   ],
+   "latency_s": 6.04
+  },
+  {
+   "cond": "C1",
+   "id": "CQ15",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident6 (TestServer6) and Incident5 (KioskWS5) involve non-severe threats.",
+   "answer": [
+    "Incident5",
+    "Incident6"
+   ],
+   "latency_s": 1.95
+  },
+  {
+   "cond": "C1",
+   "id": "CQ15",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident1, Incident5, and Incident6 involve non-severe threats.",
+   "answer": [
+    "Incident1",
+    "Incident5",
+    "Incident6"
+   ],
+   "latency_s": 1.38
+  },
+  {
+   "cond": "C1",
+   "id": "CQ15",
+   "temp": 0.0,
+   "paraphrase": true,
+   "text": "Incident5 (KioskWS5), Incident6 (TestServer6)",
+   "answer": [
+    "Incident5",
+    "Incident6"
+   ],
+   "latency_s": 1.6
+  },
+  {
+   "cond": "C1",
+   "id": "CQ16",
+   "temp": 0.0,
+   "paraphrase": false,
+   "text": "Incident2 (PhishingAttack2) and Incident6 (BruteForceAttack6) involve a severe threat but are not high severity.",
+   "answer": [
+    "Incident2",
+    "Incident6"
+   ],
+   "latency_s": 2.71
+  },
+  {
+   "cond": "C1",
+   "id": "CQ16",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident2, Incident5, Incident6.",
+   "answer": [
+    "Incident2",
+    "Incident5",
+    "Incident6"
+   ],
+   "latency_s": 0.91
+  },
+  {
+   "cond": "C1",
+   "id": "CQ16",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "PhishingAttack2, TrojanAttack5.",
+   "answer": [
+    "PhishingAttack2",
+    "TrojanAttack5"
+   ],
+   "latency_s": 0.82
+  },
+  {
+   "cond": "C1",
+   "id": "CQ16",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "PhishingAttack2, TrojanAttack5.",
+   "answer": [
+    "PhishingAttack2",
+    "TrojanAttack5"
+   ],
+   "latency_s": 0.82
+  },
+  {
+   "cond": "C1",
+   "id": "CQ16",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "Incident2, Incident5, and Incident6 involve a severe threat but are not high severity, specifically PhishingAttack2, TrojanAttack5, and BruteForceAttack6, respectively.",
+   "answer": [
+    "BruteForceAttack6",
+    "Incident2",
+    "Incident5",
+    "Incident6",
+    "PhishingAttack2",
+    "TrojanAttack5"
+   ],
+   "latency_s": 3.33
+  },
+  {
+   "cond": "C1",
+   "id": "CQ16",
+   "temp": 0.7,
+   "paraphrase": false,
+   "text": "PhishingAttack2, MalwareAttack8",
+   "answer": [
+    "MalwareAttack8",
+    "PhishingAttack2"
+   ],
+   "latency_s": 0.84
+  },
+  {
+   "cond": "C1",
+   "id": "CQ16",
+   "temp": 0.0,
+   "paraphrase": true,
+   "text": "Incident2, Incident5, Incident6",
+   "answer": [
+    "Incident2",
+    "Incident5",
+    "Incident6"
+   ],
+   "latency_s": 0.98
+  }
+ ]
+}

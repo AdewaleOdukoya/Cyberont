@@ -1,0 +1,7 @@
+k=1
+{"runs": 5, "consistent": true, "unsatisfiable_classes": 0, "inferred_type_links": 211, "consistency_ms": [28.51, 2.55, 28.21], "classification_ms": [67.19, 9.09, 70.92], "realisation_ms": [62.46, 11.13, 61.22], "total_ms": [158.16, 14.88, 150.13]}
+      3 HighSeverityIncident       2 LowSeverityIncident       2 MediumSeverityIncident       1 Unclassified 
+k=10
+{"runs": 5, "consistent": true, "unsatisfiable_classes": 0, "inferred_type_links": 1768, "consistency_ms": [239.79, 18.26, 240.69], "classification_ms": [3127.77, 278.82, 3128.45], "realisation_ms": [13643.15, 640.75, 13555.33], "total_ms": [17010.72, 826.75, 17089.48]}
+     30 HighSeverityIncident      20 LowSeverityIncident      20 MediumSeverityIncident      10 Unclassified 
+k=50

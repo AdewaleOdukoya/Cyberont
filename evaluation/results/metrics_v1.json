@@ -1,0 +1,19 @@
+{
+  "classes": 36,
+  "object_properties": 10,
+  "data_properties": 6,
+  "individuals": 6,
+  "axioms": 139,
+  "logical_axioms": 81,
+  "tbox_axioms": 62,
+  "rbox_axioms": 0,
+  "abox_axioms": 19,
+  "equivalent_class_axioms": 1,
+  "subclass_axioms": 28,
+  "disjoint_class_axioms": 1,
+  "class_assertions": 7,
+  "object_property_assertions": 6,
+  "data_property_assertions": 6,
+  "annotation_assertions": 0,
+  "dl_expressivity": "RRESTRCCINTE(D)"
+}

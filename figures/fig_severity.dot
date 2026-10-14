@@ -1,0 +1,12 @@
+digraph S {
+  graph [rankdir=TB, nodesep=0.08, ranksep=0.18, fontname="Liberation Sans", dpi=300, pad=0.03];
+  node [fontname="Liberation Sans", fontsize=8, shape=box, style="rounded", penwidth=0.8, margin="0.07,0.04", height=0.22];
+  edge [arrowsize=0.45, penwidth=0.7, color="#444444"];
+  a1 [label="hasCriticality\n(FIPS 199)"]; a2 [label="hasCVSSScore\n(CVSS v3.1)"]; a3 [label="usesTechnique,\npartOfTactic\n(ATT&CK)"];
+  f1 [label="CriticalAsset\nModerateCrit.Asset\nLowCrit.Asset"]; f2 [label="SevereVuln.\n(≥ 7.0)\nNonSevereVuln.\n(< 7.0)"]; f3 [label="ImpactTechnique\n(TA0040)\nNonImpact-\nTechnique"];
+  t [label="SevereThreat ≡\nHighImpactThreat ⊔ ∃exploits.SevereVuln.\nNonSevereThreat ≡\n∀uses.NonImpactTech. ⊓ ∀exploits.NonSevereVuln.", style="rounded,filled", fillcolor="#F0F0F0"];
+  m [label="Severity matrix over the most\ncritical asset × most severe threat", style="rounded,filled", fillcolor="#F0F0F0"];
+  o [label="High- | Medium- | LowSeverityIncident\n(pairwise disjoint by entailment)", style="rounded,bold"];
+  {rank=same; a1; a2; a3;} a1 -> a2 -> a3 [style=invis]; {rank=same; f1; f2; f3;} f1 -> f2 -> f3 [style=invis];
+  a1 -> f1; a2 -> f2; a3 -> f3; f2 -> t; f3 -> t; f1 -> m; t -> m; m -> o;
+}

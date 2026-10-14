@@ -1,0 +1,9 @@
+incident	scenario	most_critical_asset	threat_factor	reference	rationale
+Incident1	S1 ransomware	High	Severe (T1486 Impact; CVSS 9.8)	High	critical asset x severe threat
+Incident2	S2 phishing	Moderate	Severe (CVSS 7.8 misconfiguration)	Medium	moderate asset x severe threat
+Incident3	S3 brute force	High	Non-severe (T1110/T1078; CVSS 6.5)	Medium	critical asset x non-severe threat
+Incident4	S4 DDoS	High	Severe (T1498 Impact; no CVE)	High	critical asset x severe threat
+Incident5	S5 trojan	Low	Severe (CVSS 8.8)	Low	low asset x severe threat
+Incident6	S6 brute force	Moderate	Non-severe (T1110; CVSS 5.3/4.3)	Low	moderate asset x non-severe threat
+Incident7	S7 multi-stage	High	Severe (ransomware T1486; CVSS 9.8)	High	critical asset x severe threat (max over threats)
+Incident8	S8 incomplete	unknown	unknown (record not closed)	Unclassified	insufficient information: abstain

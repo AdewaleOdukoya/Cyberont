@@ -1,0 +1,17 @@
+id	question	dl_query	expected
+CQ1	Which incidents affect critical assets?	Incident and (affectsAsset some CriticalAsset)	Incident1,Incident3,Incident4,Incident7
+CQ2	Which incidents are of high severity?	HighSeverityIncident	Incident1,Incident4,Incident7
+CQ3	Which incidents are of medium severity?	MediumSeverityIncident	Incident2,Incident3
+CQ4	Which incidents are of low severity?	LowSeverityIncident	Incident5,Incident6
+CQ5	Which incidents involve ransomware?	Incident and (involvesThreat some RansomwareAttack)	Incident1,Incident7
+CQ6	Which threats exploit unpatched software?	Threat and (exploitsVulnerability some UnpatchedSoftware)	RansomwareAttack1,TrojanAttack5,RansomwareAttack7
+CQ7	Which vulnerabilities are rated High or Critical under CVSS v3.1?	SevereVulnerability	UnpatchedDB1,MacroPolicy2,UnpatchedBrowser5,UnpatchedSMB7
+CQ8	Which threats use an ATT&CK Impact technique?	HighImpactThreat	RansomwareAttack1,DDoSAttack4,RansomwareAttack7
+CQ9	Which incidents involve a credential-access technique?	Incident and (involvesThreat some (usesTechnique some (partOfTactic value TA0006)))	Incident3,Incident6,Incident7
+CQ10	Which critical assets carry a severe vulnerability?	CriticalAsset and (hasVulnerability some SevereVulnerability)	CriticalServer1,FileServer7
+CQ11	Which controls protect assets affected by high-severity incidents?	SecurityControl and (protectsAsset some (inverse (affectsAsset) some HighSeverityIncident))	BackupSystem1,EDR1,DDoSShield4,BackupSystem7
+CQ12	Which alerts report high-severity incidents?	Alert and (reportsIncident some HighSeverityIncident)	Alert1,Alert4
+CQ13	Which controls mitigate a threat involved in an open incident?	SecurityControl and (mitigatesThreat some (inverse (involvesThreat) some (Incident and (hasStatus value "Open"))))	BackupSystem1,AwarenessTraining2,MFA3,DDoSShield4,BackupSystem7
+CQ14	Which incidents were caused by an insider?	Incident and (causedBy some Insider)	Incident6
+CQ15	Which incidents on critical assets involve only non-severe threats?	Incident and (affectsAsset some CriticalAsset) and (involvesThreat only NonSevereThreat)	Incident3
+CQ16	Which incidents involve a severe threat but are not high severity?	Incident and (involvesThreat some SevereThreat) and (MediumSeverityIncident or LowSeverityIncident)	Incident2,Incident5

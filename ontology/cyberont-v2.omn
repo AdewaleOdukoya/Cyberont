@@ -1,0 +1,742 @@
+Prefix: : <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+Prefix: dcterms: <http://purl.org/dc/terms/>
+Prefix: skos: <http://www.w3.org/2004/02/skos/core#>
+
+Ontology: <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity> <http://www.semanticweb.org/mac/ontologies/2025/10/cybersecurity/2.0.0>
+    Annotations: rdfs:label "CyberOnt: Cybersecurity Incident Ontology"@en,
+        owl:versionInfo "2.0.0",
+        rdfs:comment "Version 2 of the cybersecurity incident ontology. Extends v1 with a standards-grounded, closure-based severity model (FIPS 199 asset criticality x CVSS v3.1 band / MITRE ATT&CK Impact tactic, combined following the qualitative risk matrix of NIST SP 800-30 Rev. 1)."@en
+
+AnnotationProperty: skos:closeMatch
+AnnotationProperty: skos:relatedMatch
+AnnotationProperty: rdfs:seeAlso
+AnnotationProperty: dcterms:source
+AnnotationProperty: :alignmentType
+    Annotations: rdfs:comment "How the entity relates to an external standard: reused, aligned, extended or new."@en
+
+ObjectProperty: :affectsAsset
+    Annotations: rdfs:comment "Links an incident to an asset whose confidentiality, integrity or availability it impacts."@en
+    Domain: :Incident
+    Range: :CyberAsset
+
+ObjectProperty: :involvesThreat
+    Annotations: rdfs:comment "Links an incident to a threat (attack) involved in it."@en
+    Domain: :Incident
+    Range: :Threat
+
+ObjectProperty: :exploitsVulnerability
+    Annotations: rdfs:comment "Links a threat to a weakness it leverages."@en
+    Domain: :Threat
+    Range: :Vulnerability
+
+ObjectProperty: :targetsAsset
+    Annotations: rdfs:comment "Links a threat to an asset it targets (v1 name: targetsAssets)."@en
+    Domain: :Threat
+    Range: :CyberAsset
+
+ObjectProperty: :causedBy
+    Annotations: rdfs:comment "Links an incident to the actor responsible for it."@en
+    Domain: :Incident
+    Range: :Actor
+
+ObjectProperty: :protectsAsset
+    Annotations: rdfs:comment "Links a control to an asset it protects (v1 name: protectsAssets)."@en
+    Domain: :SecurityControl
+    Range: :CyberAsset
+
+ObjectProperty: :mitigatesVulnerability
+    Annotations: rdfs:comment "Links a control to a vulnerability it reduces."@en
+    Domain: :SecurityControl
+    Range: :Vulnerability
+
+ObjectProperty: :mitigatesThreat
+    Annotations: rdfs:comment "Links a control to a threat it counters."@en
+    Domain: :SecurityControl
+    Range: :Threat
+
+ObjectProperty: :generatedBy
+    Annotations: rdfs:comment "Links an alert to the sensor or control that raised it."@en
+    Domain: :Alert
+    Range: :SecurityControl
+
+ObjectProperty: :reportsIncident
+    Annotations: rdfs:comment "Links an alert to the incident it reports."@en
+    Domain: :Alert
+    Range: :Incident
+
+ObjectProperty: :hasVulnerability
+    Annotations: rdfs:comment "Links an asset to a vulnerability present on it."@en
+    Domain: :CyberAsset
+    Range: :Vulnerability
+
+ObjectProperty: :usesTechnique
+    Annotations: rdfs:comment "Links a threat to a MITRE ATT&CK technique it employs."@en
+    Domain: :Threat
+    Range: :AttackTechnique
+
+ObjectProperty: :partOfTactic
+    Annotations: rdfs:comment "Links an ATT&CK technique to the tactic(s) under which ATT&CK lists it."@en
+    Domain: :AttackTechnique
+    Range: :AttackTactic
+
+DataProperty: :hasCVSSScore
+    Annotations: rdfs:comment "CVSS v3.1 base score (0.0-10.0). Functional: one base score per vulnerability record."@en
+    Characteristics: Functional
+    Domain: :Vulnerability
+    Range: xsd:decimal[>= 0.0 , <= 10.0]
+
+DataProperty: :hasCVSSVector
+    Annotations: rdfs:comment "CVSS v3.1 vector string."@en
+    Domain: :Vulnerability
+    Range: xsd:string
+
+DataProperty: :hasCVEIdentifier
+    Annotations: rdfs:comment "CVE identifier, where one exists."@en
+    Domain: :Vulnerability
+    Range: xsd:string
+
+DataProperty: :hasCriticality
+    Annotations: rdfs:comment "Business criticality of an asset expressed as a FIPS 199 potential-impact level. Functional."@en
+    Characteristics: Functional
+    Domain: :CyberAsset
+    Range: {"High" , "Moderate" , "Low"}
+
+DataProperty: :hasAttackID
+    Annotations: rdfs:comment "MITRE ATT&CK identifier, e.g. T1486 or TA0040."@en
+    Domain: :AttackTechnique or :AttackTactic
+    Range: xsd:string
+
+DataProperty: :hasHostname
+    Annotations: rdfs:comment "Host name of an asset."@en
+    Domain: :CyberAsset
+    Range: xsd:string
+
+DataProperty: :hasIPAddress
+    Annotations: rdfs:comment "IP address of an asset."@en
+    Domain: :CyberAsset
+    Range: xsd:string
+
+DataProperty: :hasStatus
+    Annotations: rdfs:comment "Workflow status, e.g. Open or Closed."@en
+    Domain: :Incident or :Alert
+    Range: xsd:string
+
+DataProperty: :hasTimestamp
+    Annotations: rdfs:comment "Time the incident or alert was recorded (v1 used xsd:string)."@en
+    Domain: :Incident or :Alert
+    Range: xsd:dateTime
+
+Class: :Actor
+    Annotations: rdfs:comment "An agent involved in a security event."@en,
+        :alignmentType "aligned",
+        skos:closeMatch "STIX 2.1 identity / threat-actor",
+        skos:closeMatch "UCO uco:Attacker (for ThreatActor)"
+
+Class: :ThreatActor
+    Annotations: rdfs:comment "An actor with malicious intent."@en,
+        :alignmentType "aligned",
+        skos:closeMatch "STIX 2.1 threat-actor SDO"
+    SubClassOf: :Actor
+
+Class: :ExternalAttacker
+    Annotations: rdfs:comment "A threat actor outside the organisation."@en,
+        :alignmentType "aligned"
+    SubClassOf: :ThreatActor
+
+Class: :Insider
+    Annotations: rdfs:comment "A threat actor inside the organisation."@en,
+        :alignmentType "aligned"
+    SubClassOf: :ThreatActor
+
+Class: :Alert
+    Annotations: rdfs:comment "A notification raised by a security control."@en,
+        :alignmentType "aligned",
+        skos:closeMatch "STIX 2.1 sighting SRO"
+
+Class: :CyberAsset
+    Annotations: rdfs:comment "Any digital resource of value to the organisation."@en,
+        :alignmentType "aligned",
+        skos:closeMatch "NIST CSF 2.0 ID.AM (asset inventory); STIX 2.1 infrastructure SDO"
+
+Class: :Application
+    Annotations: :alignmentType "aligned"
+    SubClassOf: :CyberAsset
+
+Class: :Database
+    Annotations: :alignmentType "aligned"
+    SubClassOf: :CyberAsset
+
+Class: :NetworkDevice
+    Annotations: :alignmentType "aligned"
+    SubClassOf: :CyberAsset
+
+Class: :Server
+    Annotations: :alignmentType "aligned"
+    SubClassOf: :CyberAsset
+
+Class: :UserAccount
+    Annotations: :alignmentType "aligned"
+    SubClassOf: :CyberAsset
+
+Class: :Workstation
+    Annotations: :alignmentType "aligned"
+    SubClassOf: :CyberAsset
+
+Class: :CriticalAsset
+    Annotations: rdfs:comment "Asset whose compromise would have a severe or catastrophic adverse effect (FIPS 199 HIGH). Defined, not tagged (v1 asserted it)."@en,
+        :alignmentType "extended",
+        rdfs:seeAlso <https://doi.org/10.6028/NIST.FIPS.199>
+    EquivalentTo: :CyberAsset and (:hasCriticality value "High")
+
+Class: :ModerateCriticalityAsset
+    Annotations: rdfs:comment "FIPS 199 MODERATE asset."@en,
+        :alignmentType "extended"
+    EquivalentTo: :CyberAsset and (:hasCriticality value "Moderate")
+
+Class: :LowCriticalityAsset
+    Annotations: rdfs:comment "FIPS 199 LOW asset."@en,
+        :alignmentType "extended"
+    EquivalentTo: :CyberAsset and (:hasCriticality value "Low")
+
+Class: :NonCriticalAsset
+    Annotations: rdfs:comment "Asset of moderate or low criticality."@en,
+        :alignmentType "new"
+    EquivalentTo: :ModerateCriticalityAsset or :LowCriticalityAsset
+
+Class: :Threat
+    Annotations: rdfs:comment "A realised or attempted malicious activity (an attack)."@en,
+        :alignmentType "aligned",
+        skos:closeMatch "UCO uco:Attack; STIX 2.1 attack-pattern SDO"
+
+Class: :BruteForceAttack
+    Annotations: :alignmentType "aligned",
+        rdfs:seeAlso <https://attack.mitre.org/techniques/T1110/>
+    SubClassOf: :Threat and (:usesTechnique value :T1110)
+
+Class: :DDoSAttack
+    Annotations: :alignmentType "aligned",
+        rdfs:seeAlso <https://attack.mitre.org/techniques/T1498/>
+    SubClassOf: :Threat and (:usesTechnique value :T1498)
+
+Class: :MalwareAttack
+    Annotations: :alignmentType "aligned"
+    SubClassOf: :Threat
+
+Class: :RansomwareAttack
+    Annotations: :alignmentType "aligned",
+        rdfs:seeAlso <https://attack.mitre.org/techniques/T1486/>
+    SubClassOf: :MalwareAttack and (:usesTechnique value :T1486)
+
+Class: :TrojanAttack
+    Annotations: :alignmentType "aligned",
+        rdfs:seeAlso <https://attack.mitre.org/techniques/T1204/>
+    SubClassOf: :MalwareAttack and (:usesTechnique value :T1204)
+
+Class: :PhishingAttack
+    Annotations: :alignmentType "aligned",
+        rdfs:seeAlso <https://attack.mitre.org/techniques/T1566/>
+    SubClassOf: :Threat and (:usesTechnique value :T1566)
+
+Class: :AttackTactic
+    Annotations: rdfs:comment "A MITRE ATT&CK tactic (adversary goal)."@en,
+        :alignmentType "reused",
+        rdfs:seeAlso <https://attack.mitre.org/tactics/enterprise/>
+
+Class: :AttackTechnique
+    Annotations: rdfs:comment "A MITRE ATT&CK technique (how a goal is achieved)."@en,
+        :alignmentType "reused",
+        rdfs:seeAlso <https://attack.mitre.org/techniques/enterprise/>
+
+Class: :ImpactTechnique
+    Annotations: rdfs:comment "Technique listed under the ATT&CK Impact tactic (TA0040): it directly degrades availability or integrity."@en,
+        :alignmentType "new"
+    EquivalentTo: :AttackTechnique and (:partOfTactic value :TA0040)
+
+Class: :NonImpactTechnique
+    Annotations: rdfs:comment "Technique none of whose tactics is Impact. Requires a closure axiom on the technique."@en,
+        :alignmentType "new"
+    EquivalentTo: :AttackTechnique and (:partOfTactic only (not ({:TA0040})))
+
+Class: :HighImpactThreat
+    Annotations: rdfs:comment "Threat employing at least one ATT&CK Impact technique."@en,
+        :alignmentType "new"
+    EquivalentTo: :Threat and (:usesTechnique some :ImpactTechnique)
+
+Class: :SevereThreat
+    Annotations: rdfs:comment "Threat that has high impact (ATT&CK) or exploits a High/Critical CVSS vulnerability."@en,
+        :alignmentType "new"
+    EquivalentTo: :HighImpactThreat or (:Threat and (:exploitsVulnerability some :SevereVulnerability))
+
+Class: :NonSevereThreat
+    Annotations: rdfs:comment "Threat known (under closure) to use no Impact technique and to exploit only Low/Medium CVSS vulnerabilities."@en,
+        :alignmentType "new"
+    EquivalentTo: :Threat and (:usesTechnique only :NonImpactTechnique) and (:exploitsVulnerability only :NonSevereVulnerability)
+
+Class: :Vulnerability
+    Annotations: rdfs:comment "A weakness that a threat can exploit."@en,
+        :alignmentType "aligned",
+        skos:closeMatch "UCO uco:Vulnerability; STIX 2.1 vulnerability SDO; CVE record"
+
+Class: :Misconfiguration
+    Annotations: :alignmentType "aligned"
+    SubClassOf: :Vulnerability
+
+Class: :OpenPort
+    Annotations: :alignmentType "aligned"
+    SubClassOf: :Vulnerability
+
+Class: :UnpatchedSoftware
+    Annotations: :alignmentType "aligned"
+    SubClassOf: :Vulnerability
+
+Class: :WeakPassword
+    Annotations: :alignmentType "aligned"
+    SubClassOf: :Vulnerability
+
+Class: :SevereVulnerability
+    Annotations: rdfs:comment "CVSS v3.1 qualitative rating High (7.0-8.9) or Critical (9.0-10.0)."@en,
+        :alignmentType "reused",
+        rdfs:seeAlso <https://www.first.org/cvss/v3.1/specification-document>
+    EquivalentTo: :Vulnerability and (:hasCVSSScore some xsd:decimal[>= 7.0])
+
+Class: :CriticalVulnerability
+    Annotations: rdfs:comment "CVSS v3.1 rating Critical."@en,
+        :alignmentType "reused"
+    EquivalentTo: :Vulnerability and (:hasCVSSScore some xsd:decimal[>= 9.0])
+
+Class: :NonSevereVulnerability
+    Annotations: rdfs:comment "CVSS v3.1 rating None/Low/Medium (< 7.0)."@en,
+        :alignmentType "reused"
+    EquivalentTo: :Vulnerability and (:hasCVSSScore some xsd:decimal[< 7.0])
+
+Class: :SecurityControl
+    Annotations: rdfs:comment "A technical or organisational safeguard."@en,
+        :alignmentType "aligned",
+        skos:closeMatch "STIX 2.1 course-of-action SDO; NIST SP 800-53 control"
+
+Class: :Antivirus
+    Annotations: :alignmentType "aligned"
+    SubClassOf: :SecurityControl
+
+Class: :BackupSystem
+    Annotations: :alignmentType "aligned"
+    SubClassOf: :SecurityControl
+
+Class: :FirewallRule
+    Annotations: :alignmentType "aligned"
+    SubClassOf: :SecurityControl
+
+Class: :MultiFactorAuthentication
+    Annotations: :alignmentType "aligned"
+    SubClassOf: :SecurityControl
+
+Class: :SecurityAwarenessTraining
+    Annotations: :alignmentType "aligned"
+    SubClassOf: :SecurityControl
+
+Class: :DDoSMitigationService
+    Annotations: :alignmentType "aligned"
+    SubClassOf: :SecurityControl
+
+Class: :Incident
+    Annotations: rdfs:comment "An occurrence that jeopardises an asset (NIST SP 800-61)."@en,
+        :alignmentType "aligned",
+        skos:closeMatch "STIX 2.1 incident SDO"
+
+Class: :HighSeverityIncident
+    Annotations: rdfs:comment "Matrix cell: critical asset x severe threat."@en,
+        :alignmentType "new"
+    EquivalentTo: :Incident and (:affectsAsset some :CriticalAsset) and (:involvesThreat some :SevereThreat)
+
+Class: :MediumSeverityIncident
+    Annotations: rdfs:comment "Matrix cells: critical asset x non-severe threat; moderate asset x severe threat."@en,
+        :alignmentType "new"
+    EquivalentTo: :Incident and (((:affectsAsset some :CriticalAsset) and (:involvesThreat some :Threat) and (:involvesThreat only :NonSevereThreat)) or ((:affectsAsset only :NonCriticalAsset) and (:affectsAsset some :ModerateCriticalityAsset) and (:involvesThreat some :SevereThreat)))
+
+Class: :LowSeverityIncident
+    Annotations: rdfs:comment "Matrix cells: moderate/low asset x non-severe threat; low asset x severe threat."@en,
+        :alignmentType "new"
+    EquivalentTo: :Incident and (:affectsAsset some :CyberAsset) and (:involvesThreat some :Threat) and (((:affectsAsset only :NonCriticalAsset) and (:involvesThreat only :NonSevereThreat)) or ((:affectsAsset only :LowCriticalityAsset) and (:involvesThreat some :SevereThreat)))
+
+DisjointClasses: :Actor, :Alert, :CyberAsset, :Incident, :Threat, :Vulnerability, :AttackTechnique, :AttackTactic
+DisjointClasses: :SecurityControl, :Actor, :Alert, :Incident, :Threat, :Vulnerability, :AttackTechnique, :AttackTactic
+DisjointClasses: :BruteForceAttack, :DDoSAttack, :MalwareAttack, :PhishingAttack
+DisjointClasses: :RansomwareAttack, :TrojanAttack
+DisjointClasses: :Misconfiguration, :OpenPort, :UnpatchedSoftware, :WeakPassword
+DisjointClasses: :ExternalAttacker, :Insider
+DisjointClasses: :CriticalAsset, :ModerateCriticalityAsset, :LowCriticalityAsset
+DisjointClasses: :HighSeverityIncident, :MediumSeverityIncident, :LowSeverityIncident
+
+Individual: :TA0001
+    Annotations: rdfs:label "Initial Access"@en, rdfs:seeAlso <https://attack.mitre.org/tactics/TA0001/>
+    Types: :AttackTactic
+    Facts: :hasAttackID "TA0001"
+
+Individual: :TA0002
+    Annotations: rdfs:label "Execution"@en, rdfs:seeAlso <https://attack.mitre.org/tactics/TA0002/>
+    Types: :AttackTactic
+    Facts: :hasAttackID "TA0002"
+
+Individual: :TA0003
+    Annotations: rdfs:label "Persistence"@en, rdfs:seeAlso <https://attack.mitre.org/tactics/TA0003/>
+    Types: :AttackTactic
+    Facts: :hasAttackID "TA0003"
+
+Individual: :TA0004
+    Annotations: rdfs:label "Privilege Escalation"@en, rdfs:seeAlso <https://attack.mitre.org/tactics/TA0004/>
+    Types: :AttackTactic
+    Facts: :hasAttackID "TA0004"
+
+Individual: :TA0005
+    Annotations: rdfs:label "Defense Evasion"@en, rdfs:seeAlso <https://attack.mitre.org/tactics/TA0005/>
+    Types: :AttackTactic
+    Facts: :hasAttackID "TA0005"
+
+Individual: :TA0006
+    Annotations: rdfs:label "Credential Access"@en, rdfs:seeAlso <https://attack.mitre.org/tactics/TA0006/>
+    Types: :AttackTactic
+    Facts: :hasAttackID "TA0006"
+
+Individual: :TA0040
+    Annotations: rdfs:label "Impact"@en, rdfs:seeAlso <https://attack.mitre.org/tactics/TA0040/>
+    Types: :AttackTactic
+    Facts: :hasAttackID "TA0040"
+
+Individual: :T1486
+    Annotations: rdfs:label "Data Encrypted for Impact"@en, rdfs:seeAlso <https://attack.mitre.org/techniques/T1486/>
+    Types: :AttackTechnique, :partOfTactic only {:TA0040}
+    Facts: :partOfTactic :TA0040, :hasAttackID "T1486"
+
+Individual: :T1490
+    Annotations: rdfs:label "Inhibit System Recovery"@en, rdfs:seeAlso <https://attack.mitre.org/techniques/T1490/>
+    Types: :AttackTechnique, :partOfTactic only {:TA0040}
+    Facts: :partOfTactic :TA0040, :hasAttackID "T1490"
+
+Individual: :T1498
+    Annotations: rdfs:label "Network Denial of Service"@en, rdfs:seeAlso <https://attack.mitre.org/techniques/T1498/>
+    Types: :AttackTechnique, :partOfTactic only {:TA0040}
+    Facts: :partOfTactic :TA0040, :hasAttackID "T1498"
+
+Individual: :T1110
+    Annotations: rdfs:label "Brute Force"@en, rdfs:seeAlso <https://attack.mitre.org/techniques/T1110/>
+    Types: :AttackTechnique, :partOfTactic only {:TA0006}
+    Facts: :partOfTactic :TA0006, :hasAttackID "T1110"
+
+Individual: :T1566
+    Annotations: rdfs:label "Phishing"@en, rdfs:seeAlso <https://attack.mitre.org/techniques/T1566/>
+    Types: :AttackTechnique, :partOfTactic only {:TA0001}
+    Facts: :partOfTactic :TA0001, :hasAttackID "T1566"
+
+Individual: :T1204
+    Annotations: rdfs:label "User Execution"@en, rdfs:seeAlso <https://attack.mitre.org/techniques/T1204/>
+    Types: :AttackTechnique, :partOfTactic only {:TA0002}
+    Facts: :partOfTactic :TA0002, :hasAttackID "T1204"
+
+Individual: :T1190
+    Annotations: rdfs:label "Exploit Public-Facing Application"@en, rdfs:seeAlso <https://attack.mitre.org/techniques/T1190/>
+    Types: :AttackTechnique, :partOfTactic only {:TA0001}
+    Facts: :partOfTactic :TA0001, :hasAttackID "T1190"
+
+Individual: :T1078
+    Annotations: rdfs:label "Valid Accounts"@en, rdfs:seeAlso <https://attack.mitre.org/techniques/T1078/>
+    Types: :AttackTechnique, :partOfTactic only {:TA0001, :TA0003, :TA0004, :TA0005}
+    Facts: :partOfTactic :TA0001, :partOfTactic :TA0003, :partOfTactic :TA0004, :partOfTactic :TA0005, :hasAttackID "T1078"
+
+DifferentIndividuals: :TA0001, :TA0002, :TA0003, :TA0004, :TA0005, :TA0006, :TA0040
+
+Individual: :Attacker1
+    Types: :ExternalAttacker
+
+Individual: :Insider6
+    Types: :Insider
+
+Individual: :UnpatchedDB1
+    Types: :UnpatchedSoftware
+    Facts: :hasCVSSScore "9.8"^^xsd:decimal,
+        :hasCVSSVector "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+
+Individual: :CriticalServer1
+    Types: :Server
+    Facts: :hasCriticality "High",
+        :hasHostname "prod-db-01",
+        :hasIPAddress "10.0.0.10",
+        :hasVulnerability :UnpatchedDB1
+
+Individual: :RansomwareAttack1
+    Types: :RansomwareAttack, :usesTechnique only {:T1190, :T1486, :T1490}, :exploitsVulnerability only {:UnpatchedDB1}
+    Facts: :usesTechnique :T1190,
+        :usesTechnique :T1486,
+        :usesTechnique :T1490,
+        :exploitsVulnerability :UnpatchedDB1,
+        :targetsAsset :CriticalServer1
+
+Individual: :Incident1
+    Annotations: rdfs:comment "S1: ransomware against the production database server (v1 case study)."@en
+    Types: :Incident, :affectsAsset only {:CriticalServer1}, :involvesThreat only {:RansomwareAttack1}
+    Facts: :affectsAsset :CriticalServer1,
+        :involvesThreat :RansomwareAttack1,
+        :causedBy :Attacker1,
+        :hasStatus "Open",
+        :hasTimestamp "2025-11-24T09:30:00Z"^^xsd:dateTime
+
+Individual: :BackupSystem1
+    Types: :BackupSystem
+    Facts: :protectsAsset :CriticalServer1,
+        :mitigatesThreat :RansomwareAttack1
+
+Individual: :EDR1
+    Types: :Antivirus
+    Facts: :protectsAsset :CriticalServer1
+
+Individual: :Alert1
+    Types: :Alert
+    Facts: :generatedBy :EDR1,
+        :reportsIncident :Incident1,
+        :hasStatus "Open",
+        :hasTimestamp "2025-11-24T09:28:00Z"^^xsd:dateTime
+
+Individual: :MacroPolicy2
+    Types: :Misconfiguration
+    Facts: :hasCVSSScore "7.8"^^xsd:decimal,
+        :hasCVSSVector "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+
+Individual: :FinanceWS2
+    Types: :Workstation
+    Facts: :hasCriticality "Moderate",
+        :hasHostname "fin-ws-12",
+        :hasIPAddress "10.0.2.12",
+        :hasVulnerability :MacroPolicy2
+
+Individual: :PhishingAttack2
+    Types: :PhishingAttack, :usesTechnique only {:T1566, :T1204}, :exploitsVulnerability only {:MacroPolicy2}
+    Facts: :usesTechnique :T1566,
+        :usesTechnique :T1204,
+        :exploitsVulnerability :MacroPolicy2,
+        :targetsAsset :FinanceWS2
+
+Individual: :Incident2
+    Annotations: rdfs:comment "S2: phishing e-mail with a malicious macro against a finance workstation."@en
+    Types: :Incident, :affectsAsset only {:FinanceWS2}, :involvesThreat only {:PhishingAttack2}
+    Facts: :affectsAsset :FinanceWS2,
+        :involvesThreat :PhishingAttack2,
+        :causedBy :Attacker1,
+        :hasStatus "Open",
+        :hasTimestamp "2025-11-25T08:10:00Z"^^xsd:dateTime
+
+Individual: :AwarenessTraining2
+    Types: :SecurityAwarenessTraining
+    Facts: :mitigatesThreat :PhishingAttack2
+
+Individual: :MailGateway2
+    Types: :FirewallRule
+    Facts: :protectsAsset :FinanceWS2,
+        :mitigatesVulnerability :MacroPolicy2
+
+Individual: :WeakPassword3
+    Types: :WeakPassword
+    Facts: :hasCVSSScore "6.5"^^xsd:decimal,
+        :hasCVSSVector "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+
+Individual: :AdminAccount3
+    Types: :UserAccount
+    Facts: :hasCriticality "High",
+        :hasVulnerability :WeakPassword3
+
+Individual: :BruteForceAttack3
+    Types: :BruteForceAttack, :usesTechnique only {:T1110, :T1078}, :exploitsVulnerability only {:WeakPassword3}
+    Facts: :usesTechnique :T1110,
+        :usesTechnique :T1078,
+        :exploitsVulnerability :WeakPassword3,
+        :targetsAsset :AdminAccount3
+
+Individual: :Incident3
+    Annotations: rdfs:comment "S3: password brute force against a database administrator account."@en
+    Types: :Incident, :affectsAsset only {:AdminAccount3}, :involvesThreat only {:BruteForceAttack3}
+    Facts: :affectsAsset :AdminAccount3,
+        :involvesThreat :BruteForceAttack3,
+        :causedBy :Attacker1,
+        :hasStatus "Open",
+        :hasTimestamp "2025-11-26T02:45:00Z"^^xsd:dateTime
+
+Individual: :MFA3
+    Types: :MultiFactorAuthentication
+    Facts: :protectsAsset :AdminAccount3,
+        :mitigatesVulnerability :WeakPassword3,
+        :mitigatesThreat :BruteForceAttack3
+
+Individual: :Alert3
+    Types: :Alert
+    Facts: :generatedBy :MFA3,
+        :reportsIncident :Incident3,
+        :hasStatus "Open",
+        :hasTimestamp "2025-11-26T02:44:00Z"^^xsd:dateTime
+
+Individual: :WebPortal4
+    Types: :Application
+    Facts: :hasCriticality "High",
+        :hasHostname "portal.example.com",
+        :hasIPAddress "203.0.113.4"
+
+Individual: :DDoSAttack4
+    Types: :DDoSAttack, :usesTechnique only {:T1498}, :exploitsVulnerability only owl:Nothing
+    Facts: :usesTechnique :T1498,
+        :targetsAsset :WebPortal4
+
+Individual: :Incident4
+    Annotations: rdfs:comment "S4: volumetric DDoS against the customer-facing portal."@en
+    Types: :Incident, :affectsAsset only {:WebPortal4}, :involvesThreat only {:DDoSAttack4}
+    Facts: :affectsAsset :WebPortal4,
+        :involvesThreat :DDoSAttack4,
+        :causedBy :Attacker1,
+        :hasStatus "Open",
+        :hasTimestamp "2025-11-27T13:00:00Z"^^xsd:dateTime
+
+Individual: :DDoSShield4
+    Types: :DDoSMitigationService
+    Facts: :protectsAsset :WebPortal4,
+        :mitigatesThreat :DDoSAttack4
+
+Individual: :Alert4
+    Types: :Alert
+    Facts: :generatedBy :DDoSShield4,
+        :reportsIncident :Incident4,
+        :hasStatus "Open",
+        :hasTimestamp "2025-11-27T12:58:00Z"^^xsd:dateTime
+
+Individual: :UnpatchedBrowser5
+    Types: :UnpatchedSoftware
+    Facts: :hasCVSSScore "8.8"^^xsd:decimal,
+        :hasCVSSVector "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+
+Individual: :KioskWS5
+    Types: :Workstation
+    Facts: :hasCriticality "Low",
+        :hasHostname "lobby-kiosk-01",
+        :hasIPAddress "10.0.9.5",
+        :hasVulnerability :UnpatchedBrowser5
+
+Individual: :TrojanAttack5
+    Types: :TrojanAttack, :usesTechnique only {:T1204}, :exploitsVulnerability only {:UnpatchedBrowser5}
+    Facts: :usesTechnique :T1204,
+        :exploitsVulnerability :UnpatchedBrowser5,
+        :targetsAsset :KioskWS5
+
+Individual: :Incident5
+    Annotations: rdfs:comment "S5: trojan executed on a lobby kiosk with an unpatched browser."@en
+    Types: :Incident, :affectsAsset only {:KioskWS5}, :involvesThreat only {:TrojanAttack5}
+    Facts: :affectsAsset :KioskWS5,
+        :involvesThreat :TrojanAttack5,
+        :causedBy :Attacker1,
+        :hasStatus "Closed",
+        :hasTimestamp "2025-11-28T10:20:00Z"^^xsd:dateTime
+
+Individual: :AV5
+    Types: :Antivirus
+    Facts: :protectsAsset :KioskWS5,
+        :mitigatesThreat :TrojanAttack5
+
+Individual: :OpenSSH6
+    Types: :OpenPort
+    Facts: :hasCVSSScore "5.3"^^xsd:decimal,
+        :hasCVSSVector "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+
+Individual: :WeakPassword6
+    Types: :WeakPassword
+    Facts: :hasCVSSScore "4.3"^^xsd:decimal,
+        :hasCVSSVector "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+
+Individual: :TestServer6
+    Types: :Server
+    Facts: :hasCriticality "Moderate",
+        :hasHostname "test-app-03",
+        :hasIPAddress "10.0.5.3",
+        :hasVulnerability :OpenSSH6,
+        :hasVulnerability :WeakPassword6
+
+Individual: :BruteForceAttack6
+    Types: :BruteForceAttack, :usesTechnique only {:T1110}, :exploitsVulnerability only {:OpenSSH6, :WeakPassword6}
+    Facts: :usesTechnique :T1110,
+        :exploitsVulnerability :OpenSSH6,
+        :exploitsVulnerability :WeakPassword6,
+        :targetsAsset :TestServer6
+
+Individual: :Incident6
+    Annotations: rdfs:comment "S6: SSH password guessing against a test server by an insider."@en
+    Types: :Incident, :affectsAsset only {:TestServer6}, :involvesThreat only {:BruteForceAttack6}
+    Facts: :affectsAsset :TestServer6,
+        :involvesThreat :BruteForceAttack6,
+        :causedBy :Insider6,
+        :hasStatus "Closed",
+        :hasTimestamp "2025-11-29T22:05:00Z"^^xsd:dateTime
+
+Individual: :Firewall6
+    Types: :FirewallRule
+    Facts: :protectsAsset :TestServer6,
+        :mitigatesVulnerability :OpenSSH6
+
+Individual: :WeakPassword7
+    Types: :WeakPassword
+    Facts: :hasCVSSScore "6.5"^^xsd:decimal,
+        :hasCVSSVector "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+
+Individual: :UnpatchedSMB7
+    Types: :UnpatchedSoftware
+    Facts: :hasCVSSScore "9.8"^^xsd:decimal,
+        :hasCVSSVector "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+
+Individual: :FileServer7
+    Types: :Server
+    Facts: :hasCriticality "High",
+        :hasHostname "fs-01",
+        :hasIPAddress "10.0.0.20",
+        :hasVulnerability :WeakPassword7,
+        :hasVulnerability :UnpatchedSMB7
+
+Individual: :BruteForceAttack7
+    Types: :BruteForceAttack, :usesTechnique only {:T1110}, :exploitsVulnerability only {:WeakPassword7}
+    Facts: :usesTechnique :T1110,
+        :exploitsVulnerability :WeakPassword7,
+        :targetsAsset :FileServer7
+
+Individual: :RansomwareAttack7
+    Types: :RansomwareAttack, :usesTechnique only {:T1486}, :exploitsVulnerability only {:UnpatchedSMB7}
+    Facts: :usesTechnique :T1486,
+        :exploitsVulnerability :UnpatchedSMB7,
+        :targetsAsset :FileServer7
+
+Individual: :Incident7
+    Annotations: rdfs:comment "S7: multi-stage incident (brute force, then ransomware) on a critical file server."@en
+    Types: :Incident, :affectsAsset only {:FileServer7}, :involvesThreat only {:BruteForceAttack7, :RansomwareAttack7}
+    Facts: :affectsAsset :FileServer7,
+        :involvesThreat :BruteForceAttack7,
+        :involvesThreat :RansomwareAttack7,
+        :causedBy :Attacker1,
+        :hasStatus "Open",
+        :hasTimestamp "2025-11-30T04:15:00Z"^^xsd:dateTime
+
+Individual: :BackupSystem7
+    Types: :BackupSystem
+    Facts: :protectsAsset :FileServer7,
+        :mitigatesThreat :RansomwareAttack7
+
+Individual: :DevWS8
+    Types: :Workstation
+    Facts: :hasHostname "dev-ws-08",
+        :hasIPAddress "10.0.7.8"
+
+Individual: :MalwareAttack8
+    Types: :MalwareAttack
+    Facts: :targetsAsset :DevWS8
+
+Individual: :Incident8
+    Annotations: rdfs:comment "S8: incomplete record - unknown malware, criticality not recorded, record not closed."@en
+    Types: :Incident
+    Facts: :affectsAsset :DevWS8,
+        :involvesThreat :MalwareAttack8,
+        :hasStatus "Open",
+        :hasTimestamp "2025-12-01T11:00:00Z"^^xsd:dateTime
+
